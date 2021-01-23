@@ -1,0 +1,149 @@
+$imageLogoHEader: url('../../img/logoOxigenoCC.PNG');
+$trianguloWidth: 40%;
+$headerHeight: 270px;
+
+.Header{
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    height: $headerHeight;
+}
+
+.Fondo1{
+    z-index: -1;
+    position: absolute;
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(146,246,253,0.5) 50%);
+    width: $trianguloWidth;
+    height: $headerHeight;
+    right: 0;
+}
+
+.Triangulo-left{
+    z-index: -10;
+    position: absolute;
+    right: $trianguloWidth;
+    margin-left: -50px;
+    width: 60px;
+    height: 0px;
+    border-width: 30px;
+    border-top-width: $headerHeight;
+    border-bottom-width: 0px;
+    border-right-width: 130px;
+    border-left-width: 0px;
+    border-color: transparent rgba(146,246,253,0.4) transparent transparent;
+    border-style: solid;
+    display: inline-block;
+}
+
+.Triangulo-right{
+    width: 60px;
+    height: 0px;
+    border-width: 30px;
+    border-top-width: $headerHeight;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    border-left-width: 130px;
+    border-color: transparent transparent transparent  rgba(146,246,253,0.6);
+    border-style: solid;
+    display: inline-block;
+}
+
+
+// .Triangulo-right{
+//     width: 0;
+//     height: 0;
+//     border-style: solid;
+//     border-width: 0 50px 270px -7px;
+//     border-color: transparent transparent #007bff transparent;
+// }
+
+
+.HeaderContenedorTexto{  
+    // background-color: skyblue;
+    display: flex;  
+    flex-flow: column nowrap;
+    height: 100%;
+    width: 40%;
+    margin: 30px;
+    margin-top: 10px;
+    .HeaderLogo{
+        background-image: $imageLogoHEader;
+        height: 70px;
+        width: 80px;
+        background-size: 100% 100%;
+        
+    }
+    .HeaderTitulo{
+        font-family: Roboto, sans-serif;
+        width: 100%;
+        font-weight: 700;
+        color: #188AFC;
+        .black{
+            color: black;
+        }
+        font-size: 40px;
+       
+    }
+    .HeaderTexto{
+        margin-top: 18px;
+        padding-left: 5px;
+        font-family: Roboto, sans-serif;
+        width: 450px;
+        color: rgba($color: #000000, $alpha: 0.54);
+    }
+}    
+
+.HeaderBotonesRedes{
+    z-index: 10;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    margin: 50px;
+    margin-top: 80px;
+    margin-left:5px ;
+    // background-color: saddlebrown;
+    height: 150px;
+    width: 200px;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    color: white;
+    .HeaderFacebook{
+        .logofacebook{
+            padding: 5px;
+            padding-left: 10px;
+        }
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 25%;
+        background-color: #2339FF;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    .HeaderWhatsapp{
+        .logowhatsapp{
+            padding: 5px;
+            padding-left: 10px;
+        }
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 25%;
+        background-color:#25D366;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    .HeaderTwitter{
+        .logotwitter{
+            padding: 5px;
+            padding-left: 10px;
+        }
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 25%;
+        border-radius: 10px;
+        background-color:#34B7F1;
+        cursor: pointer;
+    }
+}
