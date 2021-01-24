@@ -22,27 +22,37 @@ export default function MyCard(props) {
     tanques,
   }= props.distribuidor
 
-  let tanques_renta = tanques[0].disponibilidad_recarga
-  let tanques_venta = tanques[0].disponibilidad_recarga
+  let tanques_renta = tanques[0].disponibilidad_renta
+  let tanques_venta = tanques[0].disponibilidad_venta
   let tanques_recarga = tanques[0].disponibilidad_recarga
+  
 
-  // let concentradores_renta = concentradores[0].disponibilidad_recarga
-  // let concentradores_venta = concentradores[0].disponibilidad_recarga
-  let disponibilidad
+  let concentradores_renta = concentradores[0].disponibilidad_renta
+  let concentradores_venta = concentradores[0].disponibilidad_venta
+  
+  
 
-  if(tanques_renta <= 2){
-    disponibilidad = <Badge variant="danger">Baja</Badge>
-  }
-  else if(tanques_renta > 2 &&  tanques_renta <= 4){
-    disponibilidad = <Badge variant="warning">Media</Badge>
-  }
-  else if(tanques_renta > 4){
-    disponibilidad = <Badge variant="success">Alta</Badge>
-  }
-  else{
-    disponibilidad = <Badge variant="dark">Sin Información</Badge>
-  }
+  function disponibilidadPicker(tanques) {
+    let disponibilidad
 
+    
+    if(tanques <= 2){
+      disponibilidad = <Badge variant="danger">Baja{tanques}</Badge>
+    }
+    else if(tanques > 2 &&  tanques <= 4){
+      disponibilidad = <Badge variant="warning">Media{tanques}</Badge>
+    }
+    else if(tanques > 4){
+      disponibilidad = <Badge variant="success">Alta{tanques}</Badge>
+    }
+    else{
+      disponibilidad = <Badge variant="dark">Sin Información</Badge>
+    }
+    
+    
+    return disponibilidad
+    
+  }
 
   return (
     <div className="col-6 card-lencho">
@@ -56,13 +66,13 @@ export default function MyCard(props) {
           <Container>          
             <Row>
               <Col>
-                Renta: {disponibilidad}
+                Renta: {disponibilidadPicker(tanques_renta)}
               </Col>
               <Col>
-                Venta: <Badge variant="warning">Media</Badge>
+                Venta: {disponibilidadPicker(tanques_venta)}
               </Col>
               <Col>
-                Recarga: <Badge variant="danger">Baja</Badge>
+                Recarga: {disponibilidadPicker(tanques_recarga)}
               </Col>
             </Row>          
           </Container>
@@ -71,10 +81,10 @@ export default function MyCard(props) {
           <Container>          
             <Row>
               <Col>
-                Renta: <Badge variant="info">Lista de espera</Badge>
+                Renta: {disponibilidadPicker(concentradores_renta)}
               </Col>
               <Col>
-                Venta: <Badge variant="danger">Baja</Badge>
+                Venta: {disponibilidadPicker(concentradores_venta)}
               </Col>            
             </Row>          
           </Container>
