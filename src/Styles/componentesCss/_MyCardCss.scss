@@ -1,0 +1,40 @@
+.card{
+    width: 28rem;
+  }
+  .card-title{
+    font-size: 60px;
+  }
+  .mycard-footer{  
+    height: 50px;
+  }
+  
+  .card-header{
+    text-align: end;
+  }
+  
+  .map{  
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    height: 50px;
+    background-color: #196BA7;
+    color: white;
+    border-bottom-left-radius: 3%;
+  }
+  
+  .tel{  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    background-color: #3BB56B;  
+    border-bottom-right-radius: 3%;
+    
+  }
+  
+  a:link {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
