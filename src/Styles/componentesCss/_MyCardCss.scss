@@ -1,8 +1,14 @@
-.card{
-    width: 28rem;
-  }
+.card-lencho{
+  margin-bottom: 20px;
+}
+
+.tarjetas-container{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
   .card-title{
-    font-size: 60px;
+    font-size: 30px;
   }
   .mycard-footer{  
     height: 50px;

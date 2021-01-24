@@ -51,7 +51,9 @@ export const MenuLateral = () =>{
             </div>
             <Card style={{ width: '100%' }}>
                 <Card.Header onClick={ () => toggle(0) } id="tanque-header">
-                    Tanques
+                    <div className="flecha-texto">
+                        Tanques
+                    </div>
                     <div className="flecha">
                         { !tanque ? <KeyboardArrowDown /> : <KeyboardArrowUp /> }
                     </div>
@@ -77,7 +79,9 @@ export const MenuLateral = () =>{
             </Card>
             <Card style={{ width: '100%' }}>
                 <Card.Header onClick={() => toggle(1) } id="tanque-header">
-                    Concentradores
+                    <div className="flecha-texto">
+                        Concentradores
+                    </div>
                     <div className="flecha">
                         { !concentrador ? <KeyboardArrowDown /> : <KeyboardArrowUp /> }
                     </div>
@@ -99,7 +103,9 @@ export const MenuLateral = () =>{
             </Card>
             <Card style={{ width: '100%' }}>
                 <Card.Header onClick={() => toggle(2) } id="tanque-header">
-                    Servicio a domicilio
+                    <div className="flecha-texto">
+                        Servicio a domicilio
+                    </div>
                     <div className="flecha">
                         { !domicilio ? <KeyboardArrowDown /> : <KeyboardArrowUp /> }
                     </div>
@@ -120,7 +126,9 @@ export const MenuLateral = () =>{
             </Card>
             <Card style={{ width: '100%' }}>
                 <Card.Header onClick={ () => toggle(3) } id="tanque-header">
-                    Pago con tarjeta
+                    <div className="flecha-texto">
+                        Pago con tarjeta
+                    </div>
                     <div className="flecha">
                         { !tarjeta ? <KeyboardArrowDown /> : <KeyboardArrowUp /> }
                     </div>

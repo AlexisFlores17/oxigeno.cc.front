@@ -6,7 +6,7 @@ export default function App() {
   const distribuidores_con_tanque = data.filter(distribuidor => distribuidor.tanques[0] != null);  
   
   return (
-    <div>
+    <div className="tarjetas-container">
       {data.map((distribuidor) =>
         <MyCard 
           key={distribuidor.nombre_distribuidor}

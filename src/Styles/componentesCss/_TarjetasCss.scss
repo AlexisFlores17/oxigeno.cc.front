@@ -1,4 +1,6 @@
 .tarjetas-container{
+    display: flex;
+    flex-flow: row wrap;
+    
     height: 1000px;
-    background-color: black;
 }
