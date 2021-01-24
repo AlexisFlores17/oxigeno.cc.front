@@ -22,24 +22,25 @@ export default function MyCard(props) {
     tanques,
   }= props.distribuidor
 
-  let disponibilidadTanques  
-  let disponibilidadCOncentradores
+  let tanques_renta = tanques[0].disponibilidad_recarga
+  let tanques_venta = tanques[0].disponibilidad_recarga
+  let tanques_recarga = tanques[0].disponibilidad_recarga
+
+  // let concentradores_renta = concentradores[0].disponibilidad_recarga
+  // let concentradores_venta = concentradores[0].disponibilidad_recarga
   let disponibilidad
-  
-  switch (concentradores) {
-    case concentradores <= 5:
-      disponibilidadTanques = "baja"
-      
-      break;
-    case concentradores > 5 && concentradores < 10:
-      disponibilidadTanques = "media"
-      break;
-    case concentradores > 10:
-      disponibilidadTanques = "alta"
-      break;
-    default:
-      disponibilidadTanques = "sinInformacion"
-      break;
+
+  if(tanques_renta <= 2){
+    disponibilidad = <Badge variant="danger">Baja</Badge>
+  }
+  else if(tanques_renta > 2 &&  tanques_renta <= 4){
+    disponibilidad = <Badge variant="warning">Media</Badge>
+  }
+  else if(tanques_renta > 4){
+    disponibilidad = <Badge variant="success">Alta</Badge>
+  }
+  else{
+    disponibilidad = <Badge variant="dark">Sin Información</Badge>
   }
 
 
@@ -55,7 +56,7 @@ export default function MyCard(props) {
           <Container>          
             <Row>
               <Col>
-                Renta: 
+                Renta: {disponibilidad}
               </Col>
               <Col>
                 Venta: <Badge variant="warning">Media</Badge>
