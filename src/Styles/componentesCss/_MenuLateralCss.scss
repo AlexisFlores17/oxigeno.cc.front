@@ -1,7 +1,44 @@
-
-.menu-lateral-container{
-    width: 20%;
-    height: 200px;
-    // background-color: black;
-    margin-left: 5%;
+.main-container{
+    display: flex;
+    flex-flow: row wrap;
+    padding: 0 5%;
+    // background-color: blue;
 }
+.menu-lateral-container{
+    display: inline-block;
+    // background-color: red;
+    height: 400px;
+    // background-color: black;
+}
+
+.menu-lateral-header{
+    font-size: 12px;
+    padding: 5px 10px;
+    color: rgba($color: black, $alpha: 0.7)
+}
+
+#tanque-header{
+    cursor: pointer;
+}
+
+.flecha{
+    float: right;
+}
+
+.menu-checkbox{
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.switch-container{
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.switch{
+    height: 50px;
+    color: green;
+}
+

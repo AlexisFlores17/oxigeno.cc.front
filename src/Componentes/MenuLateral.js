@@ -1,22 +1,12 @@
-import React, { useState } from 'react';
-
-// Menu imports
-import ListSubheader from '@material-ui/core/ListSubheader';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Collapse from '@material-ui/core/Collapse';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
-import StarBorder from '@material-ui/icons/StarBorder';
-
-// Menu 
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
+import React, { useState, useEffect } from 'react';
+import Card from 'react-bootstrap/Card';
+import Form from 'react-bootstrap/Form';
+import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown';
+import KeyboardArrowUp from '@material-ui/icons/KeyboardArrowUp';
+import Switch from '@material-ui/core/Switch';
+import FormGroup from '@material-ui/core/FormGroup';
+import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 
 
 export const MenuLateral = () =>{
@@ -26,100 +16,127 @@ export const MenuLateral = () =>{
     const [domicilio, setDomicilio] = useState(false)
     const [tarjeta, setTarjeta] = useState(false)
 
-    const handleTanque = () => {
-        setTanque(!tanque);
-    };
-    const handleConcentrador = () => {
-        setConcentrador(!concentrador);
-    };
-    const handleDomicilio = () => {
-        setDomicilio(!domicilio);
-    };
-    const handleTarjeta = () => {
-        setTarjeta(!tarjeta);
-    };
+    const [domicilioSwitch, setDomicilioSwitch] = useState(false)
+    const [tarjetaSwitch, setTarjetaSwitch] = useState(false)
 
-    const [value, setValue] = React.useState('female');
+    const toggle = (id) =>{
 
-    const handleChange = (event) => {
-        setValue(event.target.value);
-    };
+        switch (id) {
+            case 0:
+                setTanque(!tanque);
+                break;
+            case 1: 
+                setConcentrador(!concentrador);
+                break;
+            case 2:
+                setDomicilio(!domicilio);
+                break;
+            case 3: 
+                setTarjeta(!tarjeta);
+                break;
+            default:
+                break;
+        }
+    }
+
+    const prueba = () => {
+        console.log("algo")
+    }
+
 
     return(
-        <>
-            <div className="menu-lateral-container">
-                <List
-                    component="nav"
-                    aria-labelledby="nested-list-subheader"
-                    subheader={
-                        <ListSubheader component="div" id="nested-list-subheader">
-                        Filtros avanzados
-                        </ListSubheader>
-                    }
-                >
-                    <ListItem button onClick={handleTanque}>
-                        <ListItemText primary="Tanques" />
-                        {tanque ? <ExpandLess /> : <ExpandMore />}
-                    </ListItem>
-
-                    <Collapse in={tanque} timeout="auto" unmountOnExit>
-                        <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
-                            <FormControlLabel value="female" control={<Radio />} label="Female" />
-                            <FormControlLabel value="male" control={<Radio />} label="Male" />
-                            <FormControlLabel value="other" control={<Radio />} label="Other" />
-                            <FormControlLabel value="disabled" disabled control={<Radio />} label="(Disabled option)" />
-                        </RadioGroup>
-                    </Collapse>
-                    
-                    <ListItem button onClick={handleConcentrador}>
-                        <ListItemText primary="Concentradores" />
-                        {concentrador ? <ExpandLess /> : <ExpandMore />}
-                    </ListItem>
-
-                    <Collapse in={concentrador} timeout="auto" unmountOnExit>
-                        <List component="div" disablePadding>
-                            <ListItem button >
-                                <ListItemIcon>
-                                <StarBorder />
-                                </ListItemIcon>
-                                <ListItemText primary="Starred" />
-                            </ListItem>
-                        </List>
-                    </Collapse>
-
-                    <ListItem button onClick={handleDomicilio}>
-                        <ListItemText primary="Servicio a domicilio" />
-                        {domicilio ? <ExpandLess /> : <ExpandMore />}
-                    </ListItem>
-
-                    <Collapse in={domicilio} timeout="auto" unmountOnExit>
-                        <List component="div" disablePadding>
-                            <ListItem button >
-                                <ListItemIcon>
-                                <StarBorder />
-                                </ListItemIcon>
-                                <ListItemText primary="Starred" />
-                            </ListItem>
-                        </List>
-                    </Collapse>
-
-                    <ListItem button onClick={handleTarjeta}>
-                        <ListItemText primary="Pago con tarjeta" />
-                        {tarjeta ? <ExpandLess /> : <ExpandMore />}
-                    </ListItem>
-
-                    <Collapse in={tarjeta} timeout="auto" unmountOnExit>
-                        <List component="div" disablePadding>
-                            <ListItem button >
-                                <ListItemIcon>
-                                <StarBorder />
-                                </ListItemIcon>
-                                <ListItemText primary="Starred" />
-                            </ListItem>
-                        </List>
-                    </Collapse>
-                </List>
+        <div className="menu-lateral-container col-sm-3">
+            <div className="menu-lateral-header">
+                Filtros avanzados
             </div>
-        </>
+            <Card style={{ width: '100%' }}>
+                <Card.Header onClick={ () => toggle(0) } id="tanque-header">
+                    Tanques
+                    <div className="flecha">
+                        { !tanque ? <KeyboardArrowDown /> : <KeyboardArrowUp /> }
+                    </div>
+                </Card.Header>
+                { tanque && 
+                    <div className="menu-checkbox">
+                        <FormGroup>
+                            <FormControlLabel
+                                control={<Checkbox color="primary" checked={true} onChange={() => {} } name="checkedA" />}
+                                label="Venta"
+                            />
+                            <FormControlLabel
+                                control={<Checkbox color="primary" checked={true} onChange={() => {} } name="checkedA" />}
+                                label="Renta"
+                            />
+                            <FormControlLabel
+                                control={<Checkbox color="primary" checked={true} onChange={() => {} } name="checkedA" />}
+                                label="Recarga"
+                            />
+                        </FormGroup>
+                    </div>
+                }
+            </Card>
+            <Card style={{ width: '100%' }}>
+                <Card.Header onClick={() => toggle(1) } id="tanque-header">
+                    Concentradores
+                    <div className="flecha">
+                        { !concentrador ? <KeyboardArrowDown /> : <KeyboardArrowUp /> }
+                    </div>
+                </Card.Header>
+                { concentrador && 
+                    <div className="menu-checkbox">
+                        <FormGroup>
+                            <FormControlLabel
+                                control={<Checkbox color="primary" checked={true} onChange={() => {} } name="checkedA" />}
+                                label="Venta"
+                            />
+                            <FormControlLabel
+                                control={<Checkbox color="primary" checked={true} onChange={() => {} } name="checkedA" />}
+                                label="Renta"
+                            />
+                        </FormGroup>
+                    </div>
+                }
+            </Card>
+            <Card style={{ width: '100%' }}>
+                <Card.Header onClick={() => toggle(2) } id="tanque-header">
+                    Servicio a domicilio
+                    <div className="flecha">
+                        { !domicilio ? <KeyboardArrowDown /> : <KeyboardArrowUp /> }
+                    </div>
+                </Card.Header>
+                
+                    { domicilio && 
+                        <div className="switch-container">
+                            <Switch
+                                className="switch"
+                                checked={domicilioSwitch}
+                                onChange={() => setDomicilioSwitch(!domicilioSwitch)}
+                                name="checkedA"
+                                color="primary"
+                                inputProps={{ 'aria-label': 'secondary checkbox' }}
+                            />
+                        </div>
+                    }
+            </Card>
+            <Card style={{ width: '100%' }}>
+                <Card.Header onClick={ () => toggle(3) } id="tanque-header">
+                    Pago con tarjeta
+                    <div className="flecha">
+                        { !tarjeta ? <KeyboardArrowDown /> : <KeyboardArrowUp /> }
+                    </div>
+                </Card.Header>
+                    { tarjeta && 
+                        <div className="switch-container">
+                            <Switch
+                                checked={tarjetaSwitch}
+                                onChange={() => setTarjetaSwitch(!tarjetaSwitch)}
+                                name="checkedA"
+                                color="primary"
+                                inputProps={{ 'aria-label': 'secondary checkbox' }}
+                            />
+                        </div>
+                    }
+            </Card>
+        </div>
     );
 }

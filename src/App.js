@@ -1,13 +1,13 @@
 import { Header } from "./Componentes/Header";
 import { Buscador } from "./Componentes/Buscador";
-import { MenuLateral } from "./Componentes/MenuLateral";
+import { MainContent } from "./Componentes/MainContent";
 
 function App() {
   return (
     <div className="App">
       <Header />
       <Buscador />
-      <MenuLateral />
+      <MainContent />
     </div>
   );
 }
