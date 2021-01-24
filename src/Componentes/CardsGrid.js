@@ -7,7 +7,7 @@ export default function App() {
   
   return (
     <div className="tarjetas-container">
-      {data.map((distribuidor) =>
+      {distribuidores_con_tanque.map((distribuidor) =>
         <MyCard 
           key={distribuidor.nombre_distribuidor}
           distribuidor = {distribuidor}
