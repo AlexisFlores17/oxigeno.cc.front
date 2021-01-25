@@ -52,7 +52,7 @@ export default function MyCard(props) {
   }
 
   return (
-    <div className="col-6 card-lencho">
+    <div className="col-12 col-sm-10 col-md-10 col-lg-6  card-lencho">
       <Card bg={"light"}>
         <Card.Header>
           <small className="text-muted ">Última actualización: {dateFormat(`${ultima_actualizacion}`, "mmm dd yyyy")} a las {dateFormat(`${ultima_actualizacion}`, "HH:MM:ss")} </small>        

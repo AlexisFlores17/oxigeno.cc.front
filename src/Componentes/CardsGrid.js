@@ -36,7 +36,7 @@ export default function CardsGrid(props) {
   
   
   return (
-    <div className="tarjetas-container col-sm-9" >
+    <div className="tarjetas-container col-12 col-md-9" >
       {filteredData.map((distribuidor) =>
         <MyCard 
           key={distribuidor.nombre_distribuidor}

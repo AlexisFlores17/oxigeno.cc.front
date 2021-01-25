@@ -5,10 +5,10 @@
 .tarjetas-container{
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: center;
 }
   .card-title{
-    font-size: 30px;
+    font-size: 25px;
   }
   .mycard-footer{  
     height: 50px;

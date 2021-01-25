@@ -74,7 +74,7 @@ export const MenuLateral = () =>{
     
 
     return(
-        <div className="menu-lateral-container col-sm-3">
+        <div className="menu-lateral-container col-12 col-md-3 hidden-sm">
             <div className="menu-lateral-header">
                 Filtros avanzados
             </div>
