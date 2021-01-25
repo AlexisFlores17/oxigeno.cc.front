@@ -55,7 +55,7 @@ export default function MyCard(props) {
     <div className="col-6 card-lencho">
       <Card bg={"light"}>
         <Card.Header>
-          <small className="text-muted ">{ultima_actualizacion} </small>        
+          <small className="text-muted ">Última actualizción: {ultima_actualizacion} </small>        
         </Card.Header>
         <Card.Body>
           <Card.Title className="card-title">{nombre_distribuidor}</Card.Title>
