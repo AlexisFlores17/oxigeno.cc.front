@@ -14,7 +14,6 @@ export const MenuLateral = () =>{
 
     const dispatch = useDispatch();
     const state = useSelector( state => state.filtrosAvanzados );
-
     
     const [tanque, setTanque] = useState(false)
     const [concentrador, setConcentrador] = useState(false)
