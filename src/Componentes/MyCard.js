@@ -6,6 +6,8 @@ import Badge from 'react-bootstrap/Badge';
 import CloseIcon from '@material-ui/icons/Close';
 import CheckIcon from '@material-ui/icons/Check';
 
+
+
 export default function MyCard(props) { 
   const {
     nombre_distribuidor,
@@ -21,6 +23,53 @@ export default function MyCard(props) {
     concentradores,
     tanques,
   }= props.distribuidor
+
+  var dateFormat = require("dateformat");
+  dateFormat.i18n = {
+    dayNames: [
+      "Dom",
+      "Lun",
+      "Mar",
+      "Miér",
+      "Jue",
+      "Vie",
+      "Sáb",
+      "Dom",
+      "Lunes",
+      "Martes",
+      "Miércoles",
+      "Jueves",
+      "Viernes",
+      "Sábado",
+    ],
+    monthNames: [
+      "Ene",
+      "Feb",
+      "Mar",
+      "Abr",
+      "May",
+      "Jun",
+      "Jul",
+      "Ago",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dic",
+      "Enero",
+      "Febrero",
+      "Marzo",
+      "Abril",
+      "Mayo",
+      "Junio",
+      "Julio",
+      "Agosto",
+      "Septiembre",
+      "Octubre",
+      "Noviembre",
+      "Dicembre",
+    ],
+    timeNames: ["a", "p", "am", "pm", "A", "P", "AM", "PM"],
+  };
 
   // let tanques_renta = tanques[0].disponibilidad_renta
   // let tanques_venta = tanques[0].disponibilidad_venta
@@ -55,7 +104,7 @@ export default function MyCard(props) {
     <div className="col-6 card-lencho">
       <Card bg={"light"}>
         <Card.Header>
-          <small className="text-muted ">Última actualizción: {ultima_actualizacion} </small>        
+          <small className="text-muted ">Última actualización: {dateFormat(`${ultima_actualizacion}`, "mmm dd yyyy")} a las {dateFormat(`${ultima_actualizacion}`, "HH:MM:ss")} </small>        
         </Card.Header>
         <Card.Body>
           <Card.Title className="card-title">{nombre_distribuidor}</Card.Title>
