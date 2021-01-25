@@ -24,15 +24,15 @@ export const Header = () =>{
             <div className="HeaderBotonesRedes animate__animated animate__fadeIn animate__duration-1s animate__delay-1s" >
                 <div className="HeaderFacebook">
                     <FacebookIcon className="logofacebook" />
-                    <div>Compartir por Facebook</div>
+                    <div>Compartir</div>
                 </div>
                 <div className="HeaderWhatsapp">
                     <WhatsAppIcon className="logowhatsapp" />
-                    <div>Compartir por Whatsapp</div>
+                    <div>Compartir</div>
                 </div>
                 <div className="HeaderTwitter" onClick={unClick}>
                     <TwitterIcon className="logotwitter" />
-                    <div>Compartir por Twitter</div>
+                    <div>Compartir</div>
                 </div>
             </div>
         </div></>
