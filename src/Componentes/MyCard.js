@@ -35,8 +35,10 @@ export default function MyCard(props) {
 
   function disponibilidadPicker(tanques) {
     let disponibilidad
-    
-    if(tanques <= 5){
+    if(tanques == 0){
+      disponibilidad = <Badge variant="secondary">Sin Disponibilidad{tanques}</Badge>
+    }
+    else if(tanques > 0 &&  tanques <= 5){
       disponibilidad = <Badge variant="danger">Baja{tanques}</Badge>
     }
     else if(tanques > 5 &&  tanques <= 10){
