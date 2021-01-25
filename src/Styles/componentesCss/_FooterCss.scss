@@ -1,3 +1,21 @@
+$imageLogoFooter: url('../../img/cerebrofoco.png');
+
 .footer{
+    margin: 0;
+}
+.footerContainer{
+    display: flex;
+    flex-flow: row wrap; 
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.copyOxigeno{
     
+    margin: 0 0;
+    color: #188AFC;
+}
+.refLsd{
+    a{
+        color: #188AFC;
+    }
 }
