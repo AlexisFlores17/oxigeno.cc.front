@@ -5,22 +5,22 @@
     "estado": "CDMX",
     "direccion": "Calz. San Juan de Aragón 222, Constitución de la República, Gustavo A. Madero, 07469 Ciudad de México, CDMX",
     "ciudad": "Gustavo A. Madero",
-    "a_domicilio": false,
+    "a_domicilio": true,
     "pago_con_tarjeta": false,
     "notas": "",
     "telefono": "5556581111",
     "ultima_actualizacion": "2021-01-23T06:04:40Z",
     "concentradores": [
       {
-        "disponibilidad_renta": 42,
+        "disponibilidad_renta": 0,
         "disponibilidad_venta": 51
       }
     ],
     "tanques": [
       {
-        "disponibilidad_renta": 4,
-        "disponibilidad_venta": 22,
-        "disponibilidad_recarga": 3
+        "disponibilidad_renta": 1,
+        "disponibilidad_venta": 10,
+        "disponibilidad_recarga": 0
       }
     ]
   },
@@ -37,8 +37,8 @@
     "ultima_actualizacion": "2021-01-23T06:08:27Z",
     "concentradores": [
       {
-        "disponibilidad_renta": 4,
-        "disponibilidad_venta": 5
+        "disponibilidad_renta": 0,
+        "disponibilidad_venta": 0
       }
     ],
     "tanques": [
