@@ -6,10 +6,6 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 
 export const Header = () =>{
 
-    const unClick = () =>{
-        console.log("algo");
-    }
-
     return(<>
         <div className="Header" >
             <div className="Triangulo-left animate__animated animate__fadeInUp"></div>
@@ -22,18 +18,21 @@ export const Header = () =>{
                 <div className="HeaderTexto" >Información actualizada todos los días para comprar, rentar o recargar tanques de oxígeno en la Ciudad de México.</div>            
             </div>
             <div className="HeaderBotonesRedes animate__animated animate__fadeIn animate__duration-1s animate__delay-1s" >
-                <div className="HeaderFacebook">
-                    <FacebookIcon className="logofacebook" />
-                    <div>Compartir</div>
-                </div>
-                <div className="HeaderWhatsapp">
+                <a href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Foxigeno.cc%2F" target="_blank" rel="noopener" aria-label="Share on Facebook" className="HeaderFacebook" >
+                    
+                        <FacebookIcon className="logofacebook"  />
+                        <div>Compartir</div>
+                    
+                </a>
+                
+                <a className="HeaderWhatsapp" href="https://api.whatsapp.com/send?text=https://oxigeno.cc" target="_blank" rel="noopener">
                     <WhatsAppIcon className="logowhatsapp" />
                     <div>Compartir</div>
-                </div>
-                <div className="HeaderTwitter" onClick={unClick}>
+                </a>
+                <a className="HeaderTwitter" href="https://twitter.com/intent/tweet/?text=Informaci%C3%B3n%20actualizada%20todos%20los%20d%C3%ADas%20para%20comprar%2C%20rentar%20o%20recargar%20tanques%20de%20ox%C3%ADgeno%20en%20la%20Ciudad%20de%20M%C3%A9xico.&amp;url=https%3A%2F%2Foxigeno.cc%2F" target="_blank" rel="noopener" aria-label="Share on Twitter">
                     <TwitterIcon className="logotwitter" />
                     <div>Compartir</div>
-                </div>
+                </a>
             </div>
         </div></>
     );
