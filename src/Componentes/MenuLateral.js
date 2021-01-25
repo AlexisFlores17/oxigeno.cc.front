@@ -9,16 +9,29 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 
-export const MenuLateral = () =>{
+export const MenuLateral = (props) =>{
 
-    const [tanque, setTanque] = useState(false)
+    const {
+        toggleCheckbox,
+        tanqueVenta,
+        tanqueRenta,
+        tanqueRecarga,
+        concentradorVenta,
+        concentradorRenta,   
+        setDomicilioSwitch,
+        setTarjetaSwitch,
+        domicilioSwitch,
+        tarjetaSwitch        
+    } = props
+
+    const [tanque, setTanque] = useState(true)
     const [concentrador, setConcentrador] = useState(false)
     const [domicilio, setDomicilio] = useState(false)
     const [tarjeta, setTarjeta] = useState(false)
 
-    const [domicilioSwitch, setDomicilioSwitch] = useState(false)
-    const [tarjetaSwitch, setTarjetaSwitch] = useState(false)
-
+    
+    
+    
     const toggle = (id) =>{
 
         switch (id) {
@@ -39,10 +52,7 @@ export const MenuLateral = () =>{
         }
     }
 
-    const prueba = () => {
-        console.log("algo")
-    }
-
+    
 
     return(
         <div className="menu-lateral-container col-sm-3">
@@ -62,15 +72,15 @@ export const MenuLateral = () =>{
                     <div className="menu-checkbox">
                         <FormGroup>
                             <FormControlLabel
-                                control={<Checkbox color="primary" checked={true} onChange={() => {} } name="checkedA" />}
+                                control={<Checkbox color="primary" checked={tanqueVenta} onChange={() => toggleCheckbox(0)} name="checkedA" />}
                                 label="Venta"
                             />
                             <FormControlLabel
-                                control={<Checkbox color="primary" checked={true} onChange={() => {} } name="checkedA" />}
+                                control={<Checkbox color="primary" checked={tanqueRenta} onChange={() => toggleCheckbox(1) } name="checkedA" />}
                                 label="Renta"
                             />
                             <FormControlLabel
-                                control={<Checkbox color="primary" checked={true} onChange={() => {} } name="checkedA" />}
+                                control={<Checkbox color="primary" checked={tanqueRecarga} onChange={() => toggleCheckbox(2) } name="checkedA" />}
                                 label="Recarga"
                             />
                         </FormGroup>
@@ -90,11 +100,11 @@ export const MenuLateral = () =>{
                     <div className="menu-checkbox">
                         <FormGroup>
                             <FormControlLabel
-                                control={<Checkbox color="primary" checked={true} onChange={() => {} } name="checkedA" />}
+                                control={<Checkbox color="primary" checked={concentradorVenta} onChange={() => toggleCheckbox(3) } name="checkedA" />}
                                 label="Venta"
                             />
                             <FormControlLabel
-                                control={<Checkbox color="primary" checked={true} onChange={() => {} } name="checkedA" />}
+                                control={<Checkbox color="primary" checked={concentradorRenta} onChange={() => toggleCheckbox(4) } name="checkedA" />}
                                 label="Renta"
                             />
                         </FormGroup>

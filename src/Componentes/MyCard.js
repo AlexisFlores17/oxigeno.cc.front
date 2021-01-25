@@ -22,13 +22,13 @@ export default function MyCard(props) {
     tanques,
   }= props.distribuidor
 
-  let tanques_renta = tanques[0].disponibilidad_renta
-  let tanques_venta = tanques[0].disponibilidad_venta
-  let tanques_recarga = tanques[0].disponibilidad_recarga
+  // let tanques_renta = tanques[0].disponibilidad_renta
+  // let tanques_venta = tanques[0].disponibilidad_venta
+  // let tanques_recarga = tanques[0].disponibilidad_recarga
   
 
-  let concentradores_renta = concentradores[0].disponibilidad_renta
-  let concentradores_venta = concentradores[0].disponibilidad_venta
+  // let concentradores_renta = concentradores[0].disponibilidad_renta
+  // let concentradores_venta = concentradores[0].disponibilidad_venta
   
   
 
@@ -47,11 +47,8 @@ export default function MyCard(props) {
     }
     else{
       disponibilidad = <Badge variant="dark">Sin Información</Badge>
-    }
-    
-    
-    return disponibilidad
-    
+    }    
+    return disponibilidad    
   }
 
   return (
@@ -66,13 +63,13 @@ export default function MyCard(props) {
           <Container>          
             <Row>
               <Col>
-                Renta: {disponibilidadPicker(tanques_renta)}
+                Renta: 
               </Col>
               <Col>
-                Venta: {disponibilidadPicker(tanques_venta)}
+                Venta: 
               </Col>
               <Col>
-                Recarga: {disponibilidadPicker(tanques_recarga)}
+                Recarga: 
               </Col>
             </Row>          
           </Container>
@@ -81,10 +78,10 @@ export default function MyCard(props) {
           <Container>          
             <Row>
               <Col>
-                Renta: {disponibilidadPicker(concentradores_renta)}
+                Renta: 
               </Col>
               <Col>
-                Venta: {disponibilidadPicker(concentradores_venta)}
+                Venta: 
               </Col>            
             </Row>          
           </Container>
