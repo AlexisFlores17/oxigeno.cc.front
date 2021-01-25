@@ -8,33 +8,33 @@ export default function CardsGrid(props) {
   const [filteredData, setFilteredData] = useState(data)  
   
   useEffect(() => {
-    setFilteredData(data)
-    console.log(state)
+    let newData = data
+    
     if(state.domicilioSwitch){
-      setFilteredData(data.filter(distribuidor => distribuidor.a_domicilio === true))
-    } else if(state.tarjetaSwitch){
-      setFilteredData(data.filter(distribuidor => distribuidor.pago_con_tarjeta === true))      
-    }else if(state.tanqueVenta){
-      setFilteredData(data.filter(distribuidor => distribuidor.tanques[0].disponibilidad_venta > 0))      
+      newData = newData.filter(distribuidor => distribuidor.a_domicilio === true)
+    } 
+    if(state.tarjetaSwitch){
+      newData = newData.filter(distribuidor => distribuidor.pago_con_tarjeta === true)
     }
-    else if(state.tanqueRenta){
-      setFilteredData(data.filter(distribuidor => distribuidor.tanques[0].disponibilidad_renta > 0))      
+    if(state.tanqueVenta){
+      newData = newData.filter(distribuidor => distribuidor.tanques[0].disponibilidad_venta > 0)
     }
-    else if(state.tanqueRecarga){
-      setFilteredData(data.filter(distribuidor => distribuidor.tanques[0].disponibilidad_recarga > 0))      
+    if(state.tanqueRenta){
+      newData = newData.filter(distribuidor => distribuidor.tanques[0].disponibilidad_renta > 0)
     }
-    else if(state.concentradorRenta){
-      setFilteredData(data.filter(distribuidor => distribuidor.concentradores[0].disponibilidad_renta > 0))      
+    if(state.tanqueRecarga){
+      newData = newData.filter(distribuidor => distribuidor.tanques[0].disponibilidad_recarga > 0)
     }
-    else if(state.concentradorVenta){
-      setFilteredData(data.filter(distribuidor => distribuidor.concentradores[0].disponibilidad_venta > 0))      
+    if(state.concentradorRenta){
+      newData = newData.filter(distribuidor => distribuidor.concentradores[0].disponibilidad_renta > 0)
     }
+    if(state.concentradorVenta){
+      newData = newData.filter(distribuidor => distribuidor.concentradores[0].disponibilidad_venta > 0)
+    }
+
+    setFilteredData(newData)
 
   }, [state])
-
-  const distribuidores_con_tanque = data.filter(distribuidor => distribuidor.tanques[0] != null);  //TODO:quitar este filtro
-  const distribuidores_con_concentradores = data.filter(distribuidor => distribuidor.concentradores[0] != null);  //TODO:quitar este filtro
-  const distribuidores_completos = data.filter(distribuidor => distribuidor.tanques[0] != null && distribuidor.concentradores[0] != null);  //TODO:quitar este filtro
   
   return (
     <div className="tarjetas-container col-12 col-md-9" >
