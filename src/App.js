@@ -3,6 +3,7 @@ import { Buscador } from "./Componentes/Buscador";
 import { MainContent } from "./Componentes/MainContent";
 import {Provider} from "react-redux"
 import { store } from "./store/store";
+import { Footer } from "./Componentes/Footer";
 
 
 
@@ -13,6 +14,7 @@ function App() {
         <Header />
         <Buscador />
         <MainContent />
+        <Footer />
       </Provider>
 
 
