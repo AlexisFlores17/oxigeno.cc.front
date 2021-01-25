@@ -10,8 +10,6 @@ export const Buscador = () =>{
     const [estado,setEstado]= useState("");
     const [ciudad,setCiudad]= useState("");
 
-
-
     const handleSelectEstado=(e)=>{
         console.log(e)
         setEstado(e);
@@ -21,8 +19,7 @@ export const Buscador = () =>{
         console.log(e)
         setCiudad(e);
         setActivadoCiudad(true);
-    }   
-
+    }
 
     return(
         <div className="Buscador" >
