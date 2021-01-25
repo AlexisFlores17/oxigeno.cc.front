@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Badge from 'react-bootstrap/Badge';
 import CloseIcon from '@material-ui/icons/Close';
 import CheckIcon from '@material-ui/icons/Check';
-
+import {dateFormat} from '../helpers/dateFormat'
 
 
 export default function MyCard(props) { 
@@ -24,74 +24,25 @@ export default function MyCard(props) {
     tanques,
   }= props.distribuidor
 
-  var dateFormat = require("dateformat");
-  dateFormat.i18n = {
-    dayNames: [
-      "Dom",
-      "Lun",
-      "Mar",
-      "Miér",
-      "Jue",
-      "Vie",
-      "Sáb",
-      "Dom",
-      "Lunes",
-      "Martes",
-      "Miércoles",
-      "Jueves",
-      "Viernes",
-      "Sábado",
-    ],
-    monthNames: [
-      "Ene",
-      "Feb",
-      "Mar",
-      "Abr",
-      "May",
-      "Jun",
-      "Jul",
-      "Ago",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dic",
-      "Enero",
-      "Febrero",
-      "Marzo",
-      "Abril",
-      "Mayo",
-      "Junio",
-      "Julio",
-      "Agosto",
-      "Septiembre",
-      "Octubre",
-      "Noviembre",
-      "Dicembre",
-    ],
-    timeNames: ["a", "p", "am", "pm", "A", "P", "AM", "PM"],
-  };
-
-  // let tanques_renta = tanques[0].disponibilidad_renta
-  // let tanques_venta = tanques[0].disponibilidad_venta
-  // let tanques_recarga = tanques[0].disponibilidad_recarga
+  let tanques_renta = tanques[0].disponibilidad_renta
+  let tanques_venta = tanques[0].disponibilidad_venta
+  let tanques_recarga = tanques[0].disponibilidad_recarga
   
-
-  // let concentradores_renta = concentradores[0].disponibilidad_renta
-  // let concentradores_venta = concentradores[0].disponibilidad_venta
+  let concentradores_renta = concentradores[0].disponibilidad_renta
+  let concentradores_venta = concentradores[0].disponibilidad_venta
   
   
 
   function disponibilidadPicker(tanques) {
     let disponibilidad
-
     
-    if(tanques <= 2){
+    if(tanques <= 5){
       disponibilidad = <Badge variant="danger">Baja{tanques}</Badge>
     }
-    else if(tanques > 2 &&  tanques <= 4){
+    else if(tanques > 5 &&  tanques <= 10){
       disponibilidad = <Badge variant="warning">Media{tanques}</Badge>
     }
-    else if(tanques > 4){
+    else if(tanques > 10){
       disponibilidad = <Badge variant="success">Alta{tanques}</Badge>
     }
     else{
@@ -110,27 +61,27 @@ export default function MyCard(props) {
           <Card.Title className="card-title">{nombre_distribuidor}</Card.Title>
           <Card.Subtitle className="text-muted">Tanques:</Card.Subtitle>
           <Container>          
-            <Row>
+          <Row>
               <Col>
-                Renta: 
+                Renta: {disponibilidadPicker(tanques_renta)}
               </Col>
               <Col>
-                Venta: 
+                Venta: {disponibilidadPicker(tanques_venta)}
               </Col>
               <Col>
-                Recarga: 
+                Recarga: {disponibilidadPicker(tanques_recarga)}
               </Col>
-            </Row>          
+            </Row>        
           </Container>
           <br/>
           <Card.Subtitle className="text-muted">Concentradores:</Card.Subtitle>
           <Container>          
             <Row>
               <Col>
-                Renta: 
+                Renta: {disponibilidadPicker(concentradores_renta)}
               </Col>
               <Col>
-                Venta: 
+                Venta: {disponibilidadPicker(concentradores_venta)}
               </Col>            
             </Row>          
           </Container>
