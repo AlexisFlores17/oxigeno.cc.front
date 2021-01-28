@@ -12,15 +12,15 @@ export default function CardsGrid(props) {
   const [filteredData, setFilteredData] = useState(data);
   
   const endPoint = window.location.href + "data";
-  console.log(endPoint);
+  // console.log(endPoint);
   useEffect(() => {
     async function getData() {
       try {
         const dataPeticion = await fetch(endPoint);
         setData(dataPeticion);
         setCargado(2);
-        console.log("Success");
-        console.log(dataPeticion);
+        // console.log("Success");
+        // console.log(dataPeticion);
       } catch (error) {
         setCargado(0);
         // console.log("error")
