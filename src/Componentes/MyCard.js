@@ -28,8 +28,6 @@ export default function MyCard(props) {
 
   const latPrueba="19.4822518";
   const lnPrueba="-99.1049058";
-  const url ="https://www.google.com/maps/place/";
-  const urlMapa= url + latPrueba+","+lnPrueba;
 
   let tanques_renta;
 
@@ -154,10 +152,10 @@ export default function MyCard(props) {
         <Container className="mycard-footer">          
           <Row>
             <Col className="map">            
-              <Card.Link href= {urlMapa} target="_blank" rel="noreferrer" >Mapa</Card.Link>
+              <Card.Link href= {`https://www.google.com/maps/place/${latPrueba},${lnPrueba}`} target="_blank" rel="noreferrer" >Mapa</Card.Link>
             </Col>
             <Col className="tel">
-              <Card.Link href="#">{telefono}</Card.Link>
+              <Card.Link href={`tel:${telefono}`}>{telefono}</Card.Link>
             </Col>            
           </Row>          
         </Container>                      

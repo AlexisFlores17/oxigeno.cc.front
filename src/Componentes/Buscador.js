@@ -1,23 +1,23 @@
-import React,{useState } from 'react';
+import React from 'react';
 import ImgBuscador from '../img/advertencia.png';
 
 
 export const Buscador = () =>{
-    const[activadoEstado,setActivadoEstado]= useState(false);
-    const[activadoCiudad,setActivadoCiudad]= useState(false);
-    const [estado,setEstado]= useState("");
-    const [ciudad,setCiudad]= useState("");
+    // const[activadoEstado,setActivadoEstado]= useState(false);
+    // const[activadoCiudad,setActivadoCiudad]= useState(false);
+    // const [estado,setEstado]= useState("");
+    // const [ciudad,setCiudad]= useState("");
 
-    const handleSelectEstado=(e)=>{
-        console.log(e)
-        setEstado(e);
-        setActivadoEstado(true);
-    }   
-    const handleSelectCiudad=(e)=>{
-        console.log(e)
-        setCiudad(e);
-        setActivadoCiudad(true);
-    }
+    // const handleSelectEstado=(e)=>{
+    //     console.log(e)
+    //     setEstado(e);
+    //     setActivadoEstado(true);
+    // }   
+    // const handleSelectCiudad=(e)=>{
+    //     console.log(e)
+    //     setCiudad(e);
+    //     setActivadoCiudad(true);
+    // }
 
     return(
         <div className="Buscador" >
@@ -32,7 +32,7 @@ export const Buscador = () =>{
                             </div>           
                         </div>
                         <div className="BotonBuscar">
-                           <img src={ImgBuscador} className="img-fluid" ></img>
+                           <img src={ImgBuscador} alt="logo alerta" className="img-fluid" ></img>
                         </div>
                     </div>
                     
