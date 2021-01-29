@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import MyCard from "./MyCard.js"
 import {useSelector} from "react-redux";
-// import data from "../img/data.json";
+import data from "../img/data.json";
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 
 export default function CardsGrid(props) { 
-  const [data, setData] = useState([]); 
+  const [data2, setData] = useState([]); 
   const [cargado, setCargado] = useState(1); // 0 = error, 1 = cargando, 2 = success
   const state = useSelector( state => state.filtrosAvanzados );  
   const [filteredData, setFilteredData] = useState(data);
@@ -16,9 +16,9 @@ export default function CardsGrid(props) {
   useEffect(() => {
     async function getData() {
       try {
-        const dataPeticion = await fetch(endPoint);
-        const dataBase= await dataPeticion.json();
-        setData(dataBase);
+        // const dataPeticion = await fetch(endPoint);
+        // const dataBase= await dataPeticion.json();
+        setData(data);
         setCargado(2);
         // console.log("Success");
         // console.log(dataPeticion);
@@ -43,20 +43,20 @@ export default function CardsGrid(props) {
       if(state.tarjetaSwitch){
         newData = newData.filter(distribuidor => distribuidor.pago_con_tarjeta === true)
       }
-      if(state.tanqueVenta && Object.keys(state.tanques).length !== 0){
-        newData = newData.filter(distribuidor => distribuidor.tanques[0].disponibilidad_venta > 0)
+      if(state.tanqueVenta){
+        newData = newData.filter(distribuidor => distribuidor.tanques[0]?.disponibilidad_venta > 0)
       }
-      if(state.tanqueRenta && Object.keys(state.tanques).length !== 0){
-        newData = newData.filter(distribuidor => distribuidor.tanques[0].disponibilidad_renta > 0)
+      if(state.tanqueRenta){
+        newData = newData.filter(distribuidor => distribuidor.tanques[0]?.disponibilidad_renta > 0)
       }
-      if(state.tanqueRecarga && Object.keys(state.tanques).length !== 0){
-        newData = newData.filter(distribuidor => distribuidor.tanques[0].disponibilidad_recarga > 0)
+      if(state.tanqueRecarga){
+        newData = newData.filter(distribuidor => distribuidor.tanques[0]?.disponibilidad_recarga > 0)
       }
-      if(state.concentradorRenta && Object.keys(state.concentradores).length !== 0){
-        newData = newData.filter(distribuidor => distribuidor.concentradores[0].disponibilidad_renta > 0)
+      if(state.concentradorRenta){
+        newData = newData.filter(distribuidor => distribuidor.concentradores[0]?.disponibilidad_renta > 0)
       }
-      if(state.concentradorVenta && Object.keys(state.concentradores).length !== 0){
-        newData = newData.filter(distribuidor => distribuidor.concentradores[0].disponibilidad_venta > 0)
+      if(state.concentradorVenta){
+        newData = newData.filter(distribuidor => distribuidor.concentradores[0]?.disponibilidad_venta > 0)
       }
 
       setFilteredData(newData)
