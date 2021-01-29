@@ -1,7 +1,5 @@
 import React,{useState } from 'react';
-import Dropdown from 'react-bootstrap/Dropdown';
-import  Button from 'react-bootstrap/Button';
-
+import ImgBuscador from '../img/advertencia.png';
 
 
 export const Buscador = () =>{
@@ -34,7 +32,7 @@ export const Buscador = () =>{
                             </div>           
                         </div>
                         <div className="BotonBuscar">
-                           
+                           <img src={ImgBuscador} className="img-fluid" ></img>
                         </div>
                     </div>
                     
