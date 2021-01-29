@@ -5,7 +5,8 @@ import Col from 'react-bootstrap/Col';
 import Badge from 'react-bootstrap/Badge';
 import CloseIcon from '@material-ui/icons/Close';
 import CheckIcon from '@material-ui/icons/Check';
-import {dateFormat} from '../helpers/dateFormat'
+import {dateFormat} from '../helpers/dateFormat';
+
 
 
 export default function MyCard(props) { 
@@ -24,6 +25,11 @@ export default function MyCard(props) {
     concentradores,
     tanques,
   }= props.distribuidor
+
+  const latPrueba="19.4822518";
+  const lnPrueba="-99.1049058";
+  const url ="https://www.google.com/maps/place/";
+  const urlMapa= url + latPrueba+","+lnPrueba;
 
   let tanques_renta;
 
@@ -148,7 +154,7 @@ export default function MyCard(props) {
         <Container className="mycard-footer">          
           <Row>
             <Col className="map">            
-              <Card.Link href="#" >Mapa</Card.Link>
+              <Card.Link href= {urlMapa} target="_blank" rel="noreferrer" >Mapa</Card.Link>
             </Col>
             <Col className="tel">
               <Card.Link href="#">{telefono}</Card.Link>
