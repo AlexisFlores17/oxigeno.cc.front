@@ -43,19 +43,19 @@ export default function CardsGrid(props) {
       if(state.tarjetaSwitch){
         newData = newData.filter(distribuidor => distribuidor.pago_con_tarjeta === true)
       }
-      if(state.tanqueVenta){
+      if(state.tanqueVenta && Object.keys(state.tanques).length !== 0){
         newData = newData.filter(distribuidor => distribuidor.tanques[0].disponibilidad_venta > 0)
       }
-      if(state.tanqueRenta){
+      if(state.tanqueRenta && Object.keys(state.tanques).length !== 0){
         newData = newData.filter(distribuidor => distribuidor.tanques[0].disponibilidad_renta > 0)
       }
-      if(state.tanqueRecarga){
+      if(state.tanqueRecarga && Object.keys(state.tanques).length !== 0){
         newData = newData.filter(distribuidor => distribuidor.tanques[0].disponibilidad_recarga > 0)
       }
-      if(state.concentradorRenta){
+      if(state.concentradorRenta && Object.keys(state.concentradores).length !== 0){
         newData = newData.filter(distribuidor => distribuidor.concentradores[0].disponibilidad_renta > 0)
       }
-      if(state.concentradorVenta){
+      if(state.concentradorVenta && Object.keys(state.concentradores).length !== 0){
         newData = newData.filter(distribuidor => distribuidor.concentradores[0].disponibilidad_venta > 0)
       }
 
