@@ -2,6 +2,7 @@ import React from 'react';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import TwitterIcon from '@material-ui/icons/Twitter';
+import imgLocatel from '../img/locatel.png'
  
 
 export const Header = () =>{
@@ -13,7 +14,12 @@ export const Header = () =>{
                 <div className="Triangulo-right animate__animated animate__fadeInUp"></div>
             </div>
             <div className="HeaderContenedorTexto">
-                <div className="HeaderLogo" ></div>
+                <div className="HeaderLogoContainer">
+                    <div className="HeaderLogo" ></div>
+                    <div className="HeaderLocatel img-fluid" >
+                        <img src={imgLocatel} alt="Logo locatel" className="img-fluid"/>
+                    </div>
+                </div>
                 <div className="HeaderTitulo" ><div className="HeaderOxigeno" >oxígeno <span className="black">cc</span></div></div>
                 <div className="HeaderTexto" >Información actualizada todos los días para comprar, rentar o recargar tanques de oxígeno en la Ciudad de México.</div>            
             </div>
