@@ -26,18 +26,12 @@ export const Buscador = () =>{
             <div className="buscador-container" >
                 <div className="buscador-sombra" >
                     <div className="contenedorBuscar">
-                        <div className="ContenedorMenus">
-                            <div className="BuscadorDropDownEstado dropdown">
-                                <div>
-                                    <p className="texto" >Recuerda solo contratar oxígeno de locales establecidos ademas de hacer uso de este bajo indicación y supervisión médica</p>
-                                    <span className="correo" >Cualquier duda o comentario contactanos a: </span>
-                                    <a href="mailto:oxigeno.cc.mx@gmail.com"><span className="correo correoLinea" >oxigeno.cc.mx@gmail.com</span></a>
-                                </div>
-                            </div>
-                            <div className="BuscadorDropDownCiudad">
-                             
-                            </div>                    
-    
+                        <div className="ContenedorMenus">                                
+                            <div>
+                                <p className="texto" >Recuerda solo contratar oxígeno de locales establecidos ademas de hacer uso de este bajo indicación y supervisión médica</p>
+                                <span className="correo" >Cualquier duda o comentario contactanos a: </span>
+                                <a href="mailto:oxigeno.cc.mx@gmail.com"><span className="correo correoLinea" >oxigeno.cc.mx@gmail.com</span></a>
+                            </div>           
                         </div>
                         <div className="BotonBuscar">
                            
