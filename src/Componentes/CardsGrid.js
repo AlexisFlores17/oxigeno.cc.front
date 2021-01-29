@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import MyCard from "./MyCard.js"
 import {useSelector} from "react-redux";
-// import data from "../img/data.json";
+import data from "../img/data.json";
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 
 export default function CardsGrid(props) { 
-  const [data, setData] = useState([]); 
+  const [data2, setData] = useState([]); 
   const [cargado, setCargado] = useState(1); // 0 = error, 1 = cargando, 2 = success
   const state = useSelector( state => state.filtrosAvanzados );  
   const [filteredData, setFilteredData] = useState(data);
   
-  const endPoint = window.location.href + "data";
+  // const endPoint = window.location.href + "data";
   // console.log(endPoint);
   useEffect(() => {
     async function getData() {
       try {
-        const dataPeticion = await fetch(endPoint);
-        setData(dataPeticion);
+        // const dataPeticion = await fetch(endPoint);
+        // setData(dataPeticion);
         setCargado(2);
         // console.log("Success");
         // console.log(dataPeticion);

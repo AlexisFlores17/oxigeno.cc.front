@@ -28,49 +28,19 @@ export const Buscador = () =>{
                     <div className="contenedorBuscar">
                         <div className="ContenedorMenus">
                             <div className="BuscadorDropDownEstado dropdown">
-                                <Dropdown 
-                                    onSelect={handleSelectEstado}
-                                >
-                                    <Dropdown.Toggle id="dropdown-basic">
-                                        {activadoEstado ? estado:'Seleccione Estado' }
-                                    </Dropdown.Toggle>
-    
-                                    <Dropdown.Menu>
-                                        <Dropdown.Item id="dropdown-item" eventKey="Ciudad de México">Ciudad de México</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
+                                <div>
+                                    <p className="texto" >Recuerda solo contratar oxígeno de locales establecidos ademas de hacer uso de este bajo indicación y supervisión médica</p>
+                                    <span className="correo" >Cualquier duda o comentario contactanos a: </span>
+                                    <a href="mailto:oxigeno.cc.mx@gmail.com"><span className="correo correoLinea" >oxigeno.cc.mx@gmail.com</span></a>
+                                </div>
                             </div>
                             <div className="BuscadorDropDownCiudad">
-                                <Dropdown
-                                    onSelect={handleSelectCiudad}
-                                >
-                                    <Dropdown.Toggle variant="primary" id="dropdown-basic" >
-                                        {activadoCiudad ? ciudad:'Seleccione Ciudad' }
-                                    </Dropdown.Toggle>
-    
-                                    <Dropdown.Menu id="dropdown-menu" >
-                                        <Dropdown.Item id="dropdown-item" eventKey="Álvaro Obregon">Álvaro Obregon</Dropdown.Item>
-                                        <Dropdown.Item id="dropdown-item" eventKey="Benito Juárez">Benito Juárez</Dropdown.Item>
-                                        <Dropdown.Item id="dropdown-item" eventKey="Coyoacán">Coyoacán</Dropdown.Item>
-                                        <Dropdown.Item id="dropdown-item" eventKey="Cuajimalpa">Cuajimalpa</Dropdown.Item>
-                                        <Dropdown.Item id="dropdown-item" eventKey="Cuauhtémoc">Cuauhtémoc</Dropdown.Item>
-                                        <Dropdown.Item id="dropdown-item" eventKey="Gustavo A. Madero">Gustavo A. Madero</Dropdown.Item>
-                                        <Dropdown.Item id="dropdown-item" eventKey="Iztacalco">Iztacalco</Dropdown.Item>
-                                        <Dropdown.Item id="dropdown-item" eventKey="Iztapalapa">Iztapalapa</Dropdown.Item>
-                                        <Dropdown.Item id="dropdown-item" eventKey="Magdalena Contreras">Magdalena Contreras</Dropdown.Item>
-                                        <Dropdown.Item id="dropdown-item" eventKey="Miguel Hidalgo">Miguel Hidalgo</Dropdown.Item>
-                                        <Dropdown.Item id="dropdown-item" eventKey="Milpa Alta">Milpa Alta</Dropdown.Item>
-                                        <Dropdown.Item id="dropdown-item" eventKey="Tláhuac">Tláhuac</Dropdown.Item>
-                                        <Dropdown.Item id="dropdown-item" eventKey="Tlalpan">Tlalpan</Dropdown.Item>
-                                        <Dropdown.Item id="dropdown-item" eventKey="Venustiano Carranza">Venustiano Carranza</Dropdown.Item>
-                                        <Dropdown.Item id="dropdown-item" eventKey="Xochimilco">Xochimilco</Dropdown.Item> 
-                                    </Dropdown.Menu>
-                                </Dropdown>
+                             
                             </div>                    
     
                         </div>
                         <div className="BotonBuscar">
-                            <Button variant="outline-light"   block>Buscar</Button>
+                           
                         </div>
                     </div>
                     
