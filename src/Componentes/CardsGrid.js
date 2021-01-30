@@ -19,13 +19,13 @@ export default function CardsGrid(props) {
       try {
         const dataPeticion = await axios.get(endPoint,{
           params:{
-            tanqueVenta: state.tanqueVenta,
-            tanqueRecarga: state.tanqueRecarga,
-            tanqueRenta: state.tanqueRenta,
-            concentradorVenta: state.concentradorVenta,
-            concentradorRenta: state.concentradorRenta,
-            pagoConTarjeta: state.tarjetaSwitch,
-            aDomicilio: state.domicilioSwitch
+            tanqueVenta: state.tanqueVenta ? 1 : 0,
+            tanqueRecarga: state.tanqueRecarga ? 1 : 0,
+            tanqueRenta: state.tanqueRenta ? 1 : 0,
+            concentradorVenta: state.concentradorVenta ? 1 : 0,
+            concentradorRenta: state.concentradorRenta ? 1 : 0,
+            pagoConTarjeta: state.tarjetaSwitch ? 1 : 0,
+            aDomicilio: state.domicilioSwitch ? 1 : 0
           }
         });
         const dataBase= await dataPeticion.json();
