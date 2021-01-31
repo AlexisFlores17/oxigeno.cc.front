@@ -25,35 +25,45 @@ export default function CardsGrid(props) {
   // const endPoint = window.location.href + "data";
   const endPoint = "https://dev-oxigeno.cdmx.gob.mx/oxigeno/data";
 
+  useEffect(() => {
+    if( activePage === 1){
+      getData()
+    }else{
+      setActivePage(1);
+    }
+    console.log("peticion")
+  }, [state]);
 
   useEffect(() => {
+    console.log("peticion")
     setCargado(1)
-    async function getData() {
-      try {
-        const dataPeticion = await axios.get(endPoint,{
-          params:{
-            page: activePage,
-            perPage: perPage,
-            tanqueVenta: state.tanqueVenta ? 1 : 0,
-            tanqueRecarga: state.tanqueRecarga ? 1 : 0,
-            tanqueRenta: state.tanqueRenta ? 1 : 0,
-            concentradorVenta: state.concentradorVenta ? 1 : 0,
-            concentradorRenta: state.concentradorRenta ? 1 : 0,
-            pagoConTarjeta: state.tarjetaSwitch ? 1 : 0,
-            aDomicilio: state.domicilioSwitch ? 1 : 0
-          }
-        });
-        const dataBase= await dataPeticion.data;
-        setData(dataBase);
-        setCargado(2);
-      } catch (error) {
-        console.log(error)
-        setCargado(0);
-      }
-    }
     getData();
 
-  }, [state, activePage]);
+  }, [activePage]);
+
+  async function getData() {
+    try {
+      const dataPeticion = await axios.get(endPoint,{
+        params:{
+          page: activePage,
+          perPage: perPage,
+          tanqueVenta: state.tanqueVenta ? 1 : 0,
+          tanqueRecarga: state.tanqueRecarga ? 1 : 0,
+          tanqueRenta: state.tanqueRenta ? 1 : 0,
+          concentradorVenta: state.concentradorVenta ? 1 : 0,
+          concentradorRenta: state.concentradorRenta ? 1 : 0,
+          pagoConTarjeta: state.tarjetaSwitch ? 1 : 0,
+          aDomicilio: state.domicilioSwitch ? 1 : 0
+        }
+      });
+      const dataBase= await dataPeticion.data;
+      setData(dataBase);
+      setCargado(2);
+    } catch (error) {
+      console.log(error)
+      setCargado(0);
+    }
+  }
   
   
   if( cargado === 2 ){
