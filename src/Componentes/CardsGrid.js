@@ -59,7 +59,6 @@ export default function CardsGrid(props) {
         }
       });
       const dataBase= await dataPeticion.data;
-      console.log("peticion");
       setData(dataBase);
       setCargado(2);
     } catch (error) {
