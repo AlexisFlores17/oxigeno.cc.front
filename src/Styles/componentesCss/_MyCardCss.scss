@@ -21,7 +21,8 @@
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
-  .cajaSinResultados{
+
+}  .cajaSinResultados{
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -36,7 +37,6 @@
     color: black;
     margin-bottom: 50px ;
   }
-}
 
 .error{
   display: flex;
