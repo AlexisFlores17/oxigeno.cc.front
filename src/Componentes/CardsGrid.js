@@ -8,6 +8,7 @@ import Pagination from '@material-ui/lab/Pagination';
 export default function CardsGrid(props) { 
   const [data, setData] = useState([]); 
   const [cargado, setCargado] = useState(1); // 0 = error, 1 = cargando, 2 = success
+  const [inicio,setInicio]=useState(0);
   const state = useSelector( state => state.filtrosAvanzados );  
   const [activePage, setActivePage] = useState(1);
   const [perPage, setPerPage] = useState(6);
@@ -26,23 +27,24 @@ export default function CardsGrid(props) {
   const endPoint = "https://dev-oxigeno.cdmx.gob.mx/oxigeno/data";
 
   useEffect(() => {
-    if( activePage === 1){
+    if( activePage === 1 && inicio===1){
       getData()
     }else{
       setActivePage(1);
     }
-    console.log("peticion")
+  
   }, [state]);
 
+
   useEffect(() => {
-    console.log("peticion")
     setCargado(1)
     getData();
-
+    setInicio(1);
   }, [activePage]);
 
   async function getData() {
     try {
+    
       const dataPeticion = await axios.get(endPoint,{
         params:{
           page: activePage,
@@ -57,6 +59,7 @@ export default function CardsGrid(props) {
         }
       });
       const dataBase= await dataPeticion.data;
+      console.log("peticion");
       setData(dataBase);
       setCargado(2);
     } catch (error) {
