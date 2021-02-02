@@ -25,7 +25,9 @@ export default function MyCard(props) {
     concentradores,
     tanques,
     lat,
-    lng
+    lng,
+    link_pagina,
+    whatsapp
   }= props.distribuidor
 
   const latMapa= lat? lat:"";
@@ -147,21 +149,31 @@ export default function MyCard(props) {
           <Card.Text>
             {notas}
           </Card.Text>
-          
+          <Container className="mycard-footer">          
+            <Row>
+                <Col className="boton-carta link">            
+                  <Card.Link href= {link_pagina} target="_blank" rel="noreferrer" >{link_pagina ===null ? "Sin página": "Página Web"}</Card.Link>
+                </Col>
+                <Col className="boton-carta whatsapp">
+                  <Card.Link href={ whatsapp ===null? "#":`https://api.whatsapp.com/send?text=Hola, me gustaría obtener información.&phone=+52${whatsapp}&abid=+52${whatsapp}`} target="_blank" rel="noreferrer">{ 
+                    whatsapp === null ? "Sin Whatsapp": "Whatsapp"
+                    } </Card.Link>
+                </Col>            
+              </Row>    
+              <Row>
+              <Col className="boton-carta map">            
+                <Card.Link href= {`https://www.google.com/maps/place/${latMapa},${lngMapa}`} target="_blank" rel="noreferrer" >Mapa</Card.Link>
+              </Col>
+              <Col className="boton-carta tel">
+                <Card.Link href={`tel:${telefono}`}>{ 
+                  telefono ===0 || telefono==="0"? "5556581111":telefono
+                  } </Card.Link>
+              </Col>            
+            </Row>         
+          </Container>      
         </Card.Body>
         
-        <Container className="mycard-footer">          
-          <Row>
-            <Col className="map">            
-              <Card.Link href= {`https://www.google.com/maps/place/${latMapa},${lngMapa}`} target="_blank" rel="noreferrer" >Mapa</Card.Link>
-            </Col>
-            <Col className="tel">
-              <Card.Link href={`tel:${telefono}`}>{ 
-                telefono ===0 || telefono==="0"? "5556581111":telefono
-                } </Card.Link>
-            </Col>            
-          </Row>          
-        </Container>                      
+                
         
       </Card>
     </div>
