@@ -22,7 +22,7 @@ export const Header = () =>{
                         <img src={imgLocatel} alt="Logo locatel" className="img-fluid"/>
                     </div>
                 </div>
-                <div className="HeaderTitulo" ><div className="HeaderOxigeno" >oxígeno <span className="black">cc</span></div></div>
+                <div className="HeaderTitulo" ><div className="HeaderOxigeno" >oxígeno<span className="black"> cdmx</span></div></div>
                 <div className="HeaderTexto" >Información actualizada todos los días para comprar, rentar o recargar tanques de oxígeno en la Ciudad de México.</div>            
             </div>
             <div className="HeaderBotonesRedes animate__animated animate__fadeIn animate__duration-1s animate__delay-1s" >

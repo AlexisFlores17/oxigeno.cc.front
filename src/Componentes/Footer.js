@@ -23,7 +23,7 @@ export const Footer = () =>{
                 <img src={ImagenLocatel} alt="logo locatel" className="imagenLocatelFooter img-fluid"></img>
             </div>
             <div className="footer">
-                <div className="copyOxigeno">Oxigeno.cc</div>
+                <div className="copyOxigeno">Oxigenocdmx.cc</div>
                 <div className="refLsd">
                     <a href="https://lsdlab.com.mx/" rel="noreferrer" target="_blank">Administrado por Light & Sound Disruptive Lab</a>
                     <div className="contenedorImagen">
