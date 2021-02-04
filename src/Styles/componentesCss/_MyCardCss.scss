@@ -4,8 +4,19 @@
 .card-title{
   font-size: 25px;
 }
-.mycard-footer{  
 
+.mt10{
+  margin-top: 10px;
+}
+
+.badgeCard{
+  margin: 0 5px;
+}
+
+.rowBadge{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .card-header{

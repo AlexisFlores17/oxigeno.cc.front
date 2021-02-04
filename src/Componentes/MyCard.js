@@ -76,19 +76,19 @@ export default function MyCard(props) {
   function disponibilidadPicker(tanques) {
     let disponibilidad
     if(tanques === 0){
-      disponibilidad = <Badge variant="secondary">Sin Disponibilidad</Badge>
+      disponibilidad = <Badge  className="badgeCard" variant="secondary">Sin Disponibilidad</Badge>
     }
     else if(tanques > 0 &&  tanques <= 5){
-      disponibilidad = <Badge variant="danger">Baja</Badge>
+      disponibilidad = <Badge  className="badgeCard" variant="danger">Baja</Badge>
     }
     else if(tanques > 5 &&  tanques <= 10){
-      disponibilidad = <Badge variant="warning">Media</Badge>
+      disponibilidad = <Badge  className="badgeCard" variant="warning">Media</Badge>
     }
     else if(tanques > 10){
-      disponibilidad = <Badge variant="success">Alta</Badge>
+      disponibilidad = <Badge  className="badgeCard" variant="success">Alta</Badge>
     }
     else{
-      disponibilidad = <Badge variant="dark">Sin Información</Badge>
+      disponibilidad = <Badge  className="badgeCard" variant="primary">Lista de espera</Badge>
     }    
     return disponibilidad    
   }
@@ -101,29 +101,54 @@ export default function MyCard(props) {
         </Card.Header>
         <Card.Body>
           <Card.Title className="card-title">{nombre_distribuidor}</Card.Title>
-          <Card.Subtitle className="text-muted">Tanques:</Card.Subtitle>
+          <Card.Subtitle className="mt10">Tanques:</Card.Subtitle>
           <Container>          
-          <Row>
+          <Row className="mt10">
               <Col>
-                Renta: {disponibilidadPicker(tanques_renta)}
+                <Row className="rowBadge">
+                  Renta:
+                </Row>
+                <Row className="rowBadge">
+                  {disponibilidadPicker(tanques_renta)}
+                </Row>
               </Col>
               <Col>
-                Venta: {disponibilidadPicker(tanques_venta)}
+                <Row className="rowBadge">
+                  Venta: 
+                </Row>
+                <Row className="rowBadge">
+                  {disponibilidadPicker(tanques_venta)}
+                </Row>
               </Col>
               <Col>
-                Recarga: {disponibilidadPicker(tanques_recarga)}
+                <Row className="rowBadge">
+                  Recarga: 
+                </Row>
+                <Row className="rowBadge">
+                  {disponibilidadPicker(tanques_recarga)}
+                </Row>
               </Col>
             </Row>        
           </Container>
           <br/>
-          <Card.Subtitle className="text-muted">Concentradores:</Card.Subtitle>
+          <Card.Subtitle className="mt10">Concentradores:</Card.Subtitle>
           <Container>          
-            <Row>
+            <Row className="mt10">
               <Col>
-                Renta: {disponibilidadPicker(concentradores_renta)}
+                <Row className="rowBadge">
+                  Renta: 
+                </Row>
+                <Row className="rowBadge">
+                  {disponibilidadPicker(concentradores_renta)}
+                </Row>
               </Col>
               <Col>
-                Venta: {disponibilidadPicker(concentradores_venta)}
+                <Row className="rowBadge">
+                  Venta: 
+                </Row>
+                <Row className="rowBadge">
+                  {disponibilidadPicker(concentradores_venta)}
+                </Row>
               </Col>            
             </Row>          
           </Container>
