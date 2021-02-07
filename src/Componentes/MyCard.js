@@ -198,7 +198,7 @@ export default function MyCard(props) {
                   <Card.Link href= {link_pagina} target="_blank" rel="noreferrer" >{link_pagina ===null ? "Sin página": "Página Web"}</Card.Link>
                 </Col>
                 <Col className="boton-carta whatsapp">
-                  <Card.Link href={ whatsapp ===null? "#":`https://api.whatsapp.com/send?text=Hola, me gustaría obtener información.&phone=+52${whatsapp}&abid=+52${whatsapp}`} target="_blank" rel="noreferrer">{ 
+                  <Card.Link href={ whatsapp ===null? "#":`https://api.whatsapp.com/send?text=Hola, me gustaría obtener información.&phone=+52${whatsapp}&abid=+52${whatsapp}`} target={ whatsapp === null ? "" : "_blank"} rel="noreferrer">{ 
                     whatsapp === null ? "Sin Whatsapp": "Whatsapp"
                     } </Card.Link>
                 </Col>            
