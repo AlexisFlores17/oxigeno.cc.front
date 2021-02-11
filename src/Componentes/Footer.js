@@ -11,6 +11,14 @@ export const Footer = () =>{
 
     return(
         <div className="footerContainer">
+            <div className="footerFormDistribuidor">
+                <p>
+                    Si eres un distribuidor de oxígeno y 
+                    te gustaría aparecer en nuestra base 
+                    de datos da 
+                    click <a href="#">aquí</a> y llena el formulario de registro.
+                </p>
+            </div>
             <div className="footerPostman">
                 <p className="textoPostman">¿Eres programador? puedes usar nuestra API de forma gratuita</p>
                 <a href="https://app.getpostman.com/run-collection/90220cc63e76e5062bfd" target="_blank"><div className="botonPostman">Pruébala en postman</div></a>
