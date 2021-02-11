@@ -3,7 +3,7 @@ import Imagen1 from '../img/imagen 1.png';
 import Imagen2 from '../img/imagen 2.png';
 import ImagenLocatel from '../img/locatel.png';
 import logoLight from '../img/logoLight.png';
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -16,7 +16,7 @@ export const Footer = () =>{
                     Si eres un distribuidor de oxígeno y 
                     te gustaría aparecer en nuestra base 
                     de datos da 
-                    click <a href="#">aquí</a> y llena el formulario de registro.
+                    click <Link to="/formulario">aquí</Link> y llena el formulario de registro.
                 </p>
             </div>
             <div className="footerPostman">
