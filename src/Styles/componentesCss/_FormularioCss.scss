@@ -1,0 +1,20 @@
+
+
+.formularioContenido{
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+
+    // background-color: aqua;
+    height: 100vh;
+}
+
+.formularioCard{
+    height: 70%;
+    width: 50%;
+    -webkit-box-shadow: -1px 8px 27px 0px rgba(0,0,0,0.4); 
+    box-shadow: -1px 8px 27px 0px rgba(0,0,0,0.4);  
+    background-color: blueviolet;
+}

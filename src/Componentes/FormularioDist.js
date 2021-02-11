@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
+import { ContenidoFormulario } from './Formulario/ContenidoFormulario';
+import { FooterFormulario } from './Formulario/FooterFormulario';
+import {HeaderFormulario} from './Formulario/HeaderFormulario';
 
 export const FormularioDist = () => {
     return (
-        <div>
-            Hola soy un formulario
+        <div className="App">
+            <HeaderFormulario />
+            <ContenidoFormulario />
+            <FooterFormulario />
         </div>
     )
 }
