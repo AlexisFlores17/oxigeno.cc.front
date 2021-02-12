@@ -60,7 +60,7 @@ export const ContenidoFormulario = () => {
                     }
                 });
 
-
+                swal("Solicitud exitosa", "Nos contactaremos contigo lo más pronto posible", "success");
 
             } catch (error) {
                 console.log(error)
