@@ -17,6 +17,9 @@
     margin-bottom: 20px;
     // background-color: blueviolet;
 }
+.formulario-subtitulo{
+    font-weight: 600;
+}
 .formulariocontenido{
     padding: 50px;
     display: flex;
@@ -75,6 +78,7 @@
         }
 
         .formularioDomicilioTarjeta{
+            margin-top: 40px;
             display: flex;
             flex-flow: row nowrap;
             justify-content: space-between;
@@ -88,6 +92,7 @@
                     padding-left: 18px;
                     flex-flow: row nowrap;
                     justify-content: space-between;
+                    align-items: center;
                 }
             }
             .formularioTarjeta{
@@ -99,6 +104,8 @@
                     padding-left: 18px;
                     display: flex;
                     flex-flow: row nowrap;
+                    justify-content: space-between;
+                    align-items: center;
                 }
             }
         }
@@ -108,17 +115,25 @@
             flex-flow: row;
             justify-content: space-between;
             .formularioTanques{
+                padding: 0;
                 width: 45%;
                 .botonTanques{
+                    padding-left: 18px;
                     display: flex;
                     flex-flow: row nowrap;
+                    align-items: center;
+                    justify-content: space-between;
                 }
             }
             .formularioConcentradores{
+                padding: 0;
                 width: 45%;
                 .botonConcentradores{
+                    padding-left: 18px;
                     display: flex;
                     flex-flow: row nowrap;
+                    align-items: center;
+                    justify-content: space-between;
                 }
             }
         }

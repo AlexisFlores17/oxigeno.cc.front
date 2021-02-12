@@ -36,41 +36,41 @@ export const ContenidoFormulario = () => {
         <div className="formularioContainer">
             <div className="formularioTitulo">Formulario de registro para distribuidores</div>
             <div className="formulariocontenido">
-                <div className="formularioFormulario col-12 col-md-8">
+                <div className="formularioFormulario col-12 col-md-10 col-xl-8">
                     <form>
                         <div className="form-group formularioNombre">
-                            <label htmlFor="nombreDistribuidor">Nombre de la empresa</label>
+                            <label className="formulario-subtitulo" htmlFor="nombreDistribuidor">Nombre de la empresa</label>
                             <input type="text" className="form-control" placeholder="Nombre" name="nombreDistribuidor" onChange={handleInputChange} />
                         </div>
 
                         <div className="form-group formularioRFCTel">
                             <div className="formularioRFC">
-                                <label htmlFor="rfc">RFC</label>
+                                <label className="formulario-subtitulo" htmlFor="rfc">RFC</label>
                                 <input type="text" className="form-control" placeholder="RFC" name="rfc" onChange={handleInputChange} />
                             </div>
                             <div className="formularioTel">
-                                <label htmlFor="telefono">Telefono</label>
+                                <label className="formulario-subtitulo" htmlFor="telefono">Telefono</label>
                                 <input type="text" className="form-control" placeholder="Telefono" name="telefono" onChange={handleInputChange} />
                             </div>
                         </div>
 
                         <div className="form-group formularioDireccion">
-                            <label htmlFor="direccion">Dirección</label>
+                            <label className="formulario-subtitulo" htmlFor="direccion">Dirección</label>
                             <input type="text" className="form-control" placeholder="Dirección" name="direccion" onChange={handleInputChange} />
                         </div>
 
                         <div className="form-group formularioHorario">
-                            <label htmlFor="horario">Horario</label>
+                            <label className="formulario-subtitulo" htmlFor="horario">Horario</label>
                             <input type="text" className="form-control" placeholder="Horario" name="horario" onChange={handleInputChange} />
                         </div>
 
                         <div className="form-group formularioWebWhats">
                             <div className="formularioWeb">
-                                <label htmlFor="linkPagina">Página web</label>
+                                <label className="formulario-subtitulo" htmlFor="linkPagina">Página web</label>
                                 <input type="text" className="form-control" placeholder="Página web" name="linkPagina" onChange={handleInputChange} />
                             </div>
                             <div className="formularioWhats">
-                                <label htmlFor="whatsapp">Whatsapp</label>
+                                <label className="formulario-subtitulo" htmlFor="whatsapp">Whatsapp</label>
                                 <input type="text" className="form-control" placeholder="Whatsapp" name="whatsapp" onChange={handleInputChange} />
                             </div>
                         </div>
@@ -78,7 +78,7 @@ export const ContenidoFormulario = () => {
                         <div className="form-group formularioDomicilioTarjeta">
                          
                             <div className="form-check formularioDomicilio" >
-                                <div><label htmlFor="aDomicilio">Servicio a domicilio</label></div>
+                                <div className="formulario-subtitulo"><label htmlFor="aDomicilio">Servicio a domicilio</label></div>
                                 <div className="domicilioBoton">
                                     <span>¿Ofreces servicio a domicilio?</span>
                                     <Checkbox
@@ -92,7 +92,7 @@ export const ContenidoFormulario = () => {
                             </div>
 
                             <div className="form-check formularioTarjeta" >
-                                <div><label htmlFor="pagoConTarjeta">Pago con tarjeta</label></div>
+                                <div className="formulario-subtitulo"><label htmlFor="pagoConTarjeta">Pago con tarjeta</label></div>
                                 <div className="tarjetaBoton">
                                     <span>¿Ofreces pago con tarjeta?</span>
                                     <Checkbox
@@ -108,7 +108,7 @@ export const ContenidoFormulario = () => {
                         <div className="form-group formularioTanquesConcentradores">
                          
                             <div className="form-check formularioTanques" >
-                                <div><label htmlFor="ofreceVentaDeTanque">Tanques</label></div>
+                                <div className="formulario-subtitulo"><label htmlFor="ofreceVentaDeTanque">Tanques</label></div>
                                 <div className="botonTanques">
                                     <span>Venta de tanques</span>
                                     <Checkbox
@@ -139,7 +139,7 @@ export const ContenidoFormulario = () => {
                             </div>
 
                             <div className="form-check formularioConcentradores" >
-                                <label htmlFor="ofreceVentaDeConcentradores">Concentradores</label>
+                                <label className="formulario-subtitulo" htmlFor="ofreceVentaDeConcentradores">Concentradores</label>
                                 <div className="botonConcentradores">
                                     <span>Venta de concentradores</span>
                                     <Checkbox
