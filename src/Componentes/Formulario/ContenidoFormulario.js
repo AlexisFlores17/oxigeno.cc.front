@@ -2,6 +2,8 @@ import React,{ useState } from 'react';
 import {useForm} from '../../hooks/useForm';
 import Checkbox from '@material-ui/core/Checkbox';
 import axios from 'axios';
+import swal from 'sweetalert';
+
 
 
 export const ContenidoFormulario = () => {
@@ -32,30 +34,39 @@ export const ContenidoFormulario = () => {
     const submit = async(e)=>{
         e.preventDefault();
         setButtonActivado(true);
-        try {
-            const peticion= await axios.post("https://dev-oxigeno.cdmx.gob.mx/formulario",{
-                params:{
-                    nombreDistribuidor: formValues.nombreDistribuidor,
-                    rfc: formValues.rfc,
-                    telefono: formValues.telefono,
-                    direccion: formValues.direccion,
-                    horario: formValues.horario,
-                    linkPagina: formValues.linkPagina,
-                    whatsapp: formValues.whatsapp,
-                    aDomicilio: boolValues.aDomicilio,
-                    pagoConTarjeta: boolValues.pagoConTarjeta,
-                    ofreceVentaDeTanque: boolValues.ofreceVentaDeTanque,
-                    ofreceRentaDeTanque: boolValues.ofreceRentaDeTanque,
-                    ofreceRecargaDeTanque: boolValues.ofreceRecargaDeTanque,
-                    ofreceVentaDeConcentrador: boolValues.ofreceVentaDeConcentrador,
-                    ofreceRentaDeConcentrador: boolValues.ofreceRentaDeConcentrador,
-                }
-            });
 
-            
+        if (formValues.nombreDistribuidor ==="" || formValues.rfc==="" || formValues.telefono===""|| formValues.direccion==="" || formValues.horario==="") {
+            console.log("Error")
+            setButtonActivado(false);
+            swal("¡Alerta!", "Por favor llene los campos Requeridos", "warning");
+        }else{
+            try {
+                const peticion= await axios.post("https://dev-oxigeno.cdmx.gob.mx/formulario",{
+                    params:{
+                        nombreDistribuidor: formValues.nombreDistribuidor,
+                        rfc: formValues.rfc,
+                        telefono: formValues.telefono,
+                        direccion: formValues.direccion,
+                        horario: formValues.horario,
+                        linkPagina: formValues.linkPagina,
+                        whatsapp: formValues.whatsapp,
+                        aDomicilio: boolValues.aDomicilio,
+                        pagoConTarjeta: boolValues.pagoConTarjeta,
+                        ofreceVentaDeTanque: boolValues.ofreceVentaDeTanque,
+                        ofreceRentaDeTanque: boolValues.ofreceRentaDeTanque,
+                        ofreceRecargaDeTanque: boolValues.ofreceRecargaDeTanque,
+                        ofreceVentaDeConcentrador: boolValues.ofreceVentaDeConcentrador,
+                        ofreceRentaDeConcentrador: boolValues.ofreceRentaDeConcentrador,
+                    }
+                });
 
-        } catch (error) {
-            console.log(error)
+
+
+            } catch (error) {
+                console.log(error)
+                swal("¡Ups!", "Lo sentimos, hubo un error al hacer el registro. Por favor intente más tarde", "error");
+                setButtonActivado(false);
+            }
         }
     }
 
@@ -66,38 +77,38 @@ export const ContenidoFormulario = () => {
                 <div className="formularioFormulario col-12 col-md-10 col-xl-8">
                     <form>
                         <div className="form-group formularioNombre">
-                            <label className="formulario-subtitulo" htmlFor="nombreDistribuidor">Nombre de la empresa</label>
+                            <label className="formulario-subtitulo" htmlFor="nombreDistribuidor">Nombre de la empresa<span className="red">*</span></label>
                             <input type="text" className="form-control" placeholder="Nombre" name="nombreDistribuidor" onChange={handleInputChange} />
                         </div>
 
                         <div className="form-group formularioRFCTel">
                             <div className="formularioRFC">
-                                <label className="formulario-subtitulo" htmlFor="rfc">RFC</label>
+                                <label className="formulario-subtitulo" htmlFor="rfc">RFC<span className="red">*</span></label>
                                 <input type="text" className="form-control" placeholder="RFC" name="rfc" onChange={handleInputChange} />
                             </div>
                             <div className="formularioTel">
-                                <label className="formulario-subtitulo" htmlFor="telefono">Telefono</label>
+                                <label className="formulario-subtitulo" htmlFor="telefono">Telefono<span className="red">*</span></label>
                                 <input type="text" className="form-control" placeholder="Telefono" name="telefono" onChange={handleInputChange} />
                             </div>
                         </div>
 
                         <div className="form-group formularioDireccion">
-                            <label className="formulario-subtitulo" htmlFor="direccion">Dirección</label>
+                            <label className="formulario-subtitulo" htmlFor="direccion">Dirección<span className="red">*</span></label>
                             <input type="text" className="form-control" placeholder="Dirección" name="direccion" onChange={handleInputChange} />
                         </div>
 
                         <div className="form-group formularioHorario">
-                            <label className="formulario-subtitulo" htmlFor="horario">Horario</label>
+                            <label className="formulario-subtitulo" htmlFor="horario">Horario<span className="red">*</span></label>
                             <input type="text" className="form-control" placeholder="Horario" name="horario" onChange={handleInputChange} />
                         </div>
 
                         <div className="form-group formularioWebWhats">
                             <div className="formularioWeb">
-                                <label className="formulario-subtitulo" htmlFor="linkPagina">Página web</label>
+                                <label className="formulario-subtitulo" htmlFor="linkPagina">Página web <span className="opcional">(opcional)</span></label>
                                 <input type="text" className="form-control" placeholder="Página web" name="linkPagina" onChange={handleInputChange} />
                             </div>
                             <div className="formularioWhats">
-                                <label className="formulario-subtitulo" htmlFor="whatsapp">Whatsapp</label>
+                                <label className="formulario-subtitulo" htmlFor="whatsapp">Whatsapp <span className="opcional">(opcional)</span></label>
                                 <input type="text" className="form-control" placeholder="Whatsapp" name="whatsapp" onChange={handleInputChange} />
                             </div>
                         </div>
