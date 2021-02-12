@@ -9,6 +9,11 @@ import { Link } from 'react-router-dom';
 
 export const Footer = () =>{
 
+    function topFunction() {
+        document.body.scrollTop = 100; // For Safari
+        document.documentElement.scrollTop = 100; // For Chrome, Firefox, IE and Opera
+    }
+
     return(
         <div className="footerContainer">
             <div className="footerFormDistribuidor">
@@ -16,7 +21,7 @@ export const Footer = () =>{
                     Si eres un distribuidor de oxígeno y 
                     te gustaría aparecer en nuestra base 
                     de datos da 
-                    click <Link to="/formulario">aquí</Link> y llena el formulario de registro.
+                    click <Link onClick={topFunction} to="/formulario">aquí</Link> y llena el formulario de registro.
                 </p>
             </div>
             <div className="footerPostman">
