@@ -1,9 +1,12 @@
 import React,{ useState } from 'react';
 import {useForm} from '../../hooks/useForm';
 import Checkbox from '@material-ui/core/Checkbox';
+import axios from 'axios';
 
 
 export const ContenidoFormulario = () => {
+
+    const [buttonActivado, setButtonActivado] = useState(false)
 
     const [ boolValues, setBoolValues ] = useState({
         aDomicilio:false,
@@ -26,10 +29,34 @@ export const ContenidoFormulario = () => {
     }
     const [ formValues, handleInputChange, reset ] = useForm( initialForm );
 
-    const submit = (e)=>{
+    const submit = async(e)=>{
         e.preventDefault();
-        console.log(formValues);
-        console.log(boolValues);
+        setButtonActivado(true);
+        try {
+            const peticion= await axios.post("https://dev-oxigeno.cdmx.gob.mx/formulario",{
+                params:{
+                    nombreDistribuidor: formValues.nombreDistribuidor,
+                    rfc: formValues.rfc,
+                    telefono: formValues.telefono,
+                    direccion: formValues.direccion,
+                    horario: formValues.horario,
+                    linkPagina: formValues.linkPagina,
+                    whatsapp: formValues.whatsapp,
+                    aDomicilio: boolValues.aDomicilio,
+                    pagoConTarjeta: boolValues.pagoConTarjeta,
+                    ofreceVentaDeTanque: boolValues.ofreceVentaDeTanque,
+                    ofreceRentaDeTanque: boolValues.ofreceRentaDeTanque,
+                    ofreceRecargaDeTanque: boolValues.ofreceRecargaDeTanque,
+                    ofreceVentaDeConcentrador: boolValues.ofreceVentaDeConcentrador,
+                    ofreceRentaDeConcentrador: boolValues.ofreceRentaDeConcentrador,
+                }
+            });
+
+            
+
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (
@@ -159,7 +186,7 @@ export const ContenidoFormulario = () => {
                             </div>
                         </div>
 
-                        <div className="botonSubmit"><button  type="submit" className="btn btn-primary" onClick={(e)=>submit(e)}>Confirmar</button></div>
+                        <div className="botonSubmit"><button disabled={buttonActivado} type="submit" className="btn btn-primary" onClick={(e)=>submit(e)}>Confirmar</button></div>
                     </form> 
                 </div>
             </div>
