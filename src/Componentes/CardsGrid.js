@@ -24,7 +24,7 @@ export default function CardsGrid(props) {
     document.documentElement.scrollTop = 100; // For Chrome, Firefox, IE and Opera
   }
 
-  const endPoint = `${endPoints}/v1.1/data`;
+  const endPoint = `${endPoints}v1.2/data`;
 
   useEffect(() => {
     if( activePage === 1 && inicio===1){
