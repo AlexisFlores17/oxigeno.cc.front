@@ -60,6 +60,8 @@ export const ContenidoFormulario = () => {
                     }
                 });
 
+                console.log(peticion);
+
                 if (await peticion.status ===200) {
                     swal("Solicitud exitosa", "Nos contactaremos contigo lo más pronto posible", "success");
                     setButtonActivado(false);
