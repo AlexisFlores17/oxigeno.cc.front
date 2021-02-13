@@ -3,7 +3,7 @@ import {useForm} from '../../hooks/useForm';
 import Checkbox from '@material-ui/core/Checkbox';
 import axios from 'axios';
 import swal from 'sweetalert';
-
+import {endPoints} from '../../types/endPoints';
 
 
 export const ContenidoFormulario = () => {
@@ -41,7 +41,7 @@ export const ContenidoFormulario = () => {
             swal("¡Alerta!", "Por favor llene los campos Requeridos", "warning");
         }else{
             try {
-                const peticion= await axios.post("https://dev-oxigeno.cdmx.gob.mx/oxigeno/formulario/data",{
+                const peticion= await axios.post(`${endPoints}/formulario/data`,{
                     params:{
                         nombreDistribuidor: formValues.nombreDistribuidor,
                         rfc: formValues.rfc,
