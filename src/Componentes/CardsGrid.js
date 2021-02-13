@@ -55,7 +55,10 @@ export default function CardsGrid(props) {
           concentradorVenta: state.concentradorVenta ? 1 : 0,
           concentradorRenta: state.concentradorRenta ? 1 : 0,
           pagoConTarjeta: state.tarjetaSwitch ? 1 : 0,
-          aDomicilio: state.domicilioSwitch ? 1 : 0
+          aDomicilio: state.domicilioSwitch ? 1 : 0,
+          abiertoFin: state.abiertoFin ? 1 : 0,
+          abierto24: state.abierto24 ? 1 : 0,
+          gratis: state.gratis ? 1 : 0
         }
       });
       const dataBase= await dataPeticion.data;
