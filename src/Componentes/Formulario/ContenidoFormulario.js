@@ -41,7 +41,7 @@ export const ContenidoFormulario = () => {
             swal("¡Alerta!", "Por favor llene los campos Requeridos", "warning");
         }else{
             try {
-                const peticion= await axios.post("https://dev-oxigeno.cdmx.gob.mx/formulario",{
+                const peticion= await axios.post("https://dev-oxigeno.cdmx.gob.mx/oxigeno/formulario/data",{
                     params:{
                         nombreDistribuidor: formValues.nombreDistribuidor,
                         rfc: formValues.rfc,
@@ -60,7 +60,13 @@ export const ContenidoFormulario = () => {
                     }
                 });
 
-                swal("Solicitud exitosa", "Nos contactaremos contigo lo más pronto posible", "success");
+                if (await peticion.status ===200) {
+                    swal("Solicitud exitosa", "Nos contactaremos contigo lo más pronto posible", "success");
+                    setButtonActivado(false);
+                }else{
+                    swal("¡Ups!", "Lo sentimos, hubo un error al hacer el registro. Por favor intente más tarde", "error");
+                    setButtonActivado(false); 
+                }
 
             } catch (error) {
                 console.log(error)
