@@ -7,6 +7,7 @@ import {
   } from "react-router-dom";
 import App from '../App';
 import { FormularioDist } from '../Componentes/FormularioDist';
+import Dashboard from '../Componentes/Manager/Dashboard';
 
 export const AppRouter = () => {
     return (
@@ -14,6 +15,7 @@ export const AppRouter = () => {
             <div>    
                 <Switch>
                     <Route exact path="/oxigeno/formulario" component={FormularioDist} />
+                    <Route exact path="/manager" component={Dashboard} />
                     <Route exact path="/"           component={App} />
                     <Redirect to="/" />
                 </Switch>
