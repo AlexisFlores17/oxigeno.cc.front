@@ -13,6 +13,7 @@ import axios from 'axios';
 import { endPoints } from '../../types/endPoints';
 import {useForm} from '../../hooks/useForm';
 import swal from 'sweetalert';
+import {useHistory } from "react-router-dom";
 
 function Copyright() {
   return (
@@ -62,15 +63,20 @@ export default function SignIn() {
       swal("¡Alerta!", "Por favor llene los campos Requeridos", "warning");
     }else{
       try {
-        const peticion= await axios.post(`${endPoints}manager/login/`,{
-            params:{
+        const peticion= await axios({
+            method: 'post',
+            url: `${endPoints}manager/login/`,
+            data: {
               email: formValues.email,
               password: formValues.password
             }
-        });
 
-        if (await peticion.status ===200) {
-            console.log("Ok")
+        });
+        
+        console.log(peticion);
+
+        if (await peticion.status === 200) {
+            
         }else{
             swal("¡Ups!", "Lo sentimos, hubo un error al hacer el registro. Por favor intente más tarde", "error");
         }
