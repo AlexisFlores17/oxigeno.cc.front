@@ -41,7 +41,7 @@ export const ContenidoFormulario = () => {
             swal("¡Alerta!", "Por favor llene los campos Requeridos", "warning");
         }else{
             try {
-                const peticion= await axios.post(`${endPoints}data`,{
+                const peticion= await axios.post(`${endPoints}potencial/formulario`,{
                     params:{
                         nombreDistribuidor: formValues.nombreDistribuidor,
                         rfc: formValues.rfc,
