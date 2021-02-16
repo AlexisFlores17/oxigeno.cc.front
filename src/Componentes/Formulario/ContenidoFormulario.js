@@ -31,6 +31,23 @@ export const ContenidoFormulario = () => {
     }
     const [ formValues, handleInputChange, reset ] = useForm( initialForm );
 
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken');
+
     const submit = async(e)=>{
         e.preventDefault();
         setButtonActivado(true);
@@ -41,9 +58,9 @@ export const ContenidoFormulario = () => {
             swal("¡Alerta!", "Por favor llene los campos Requeridos", "warning");
         }else{
             try {
-                const peticion= await axios.post(`${endPoints}potencial/formulario`,{
+                const peticion= await axios.post(`${endPoints}potencial/formulario/`,{
                     params:{
-                        nombreDistribuidor: formValues.nombreDistribuidor,
+                        nombre_distribuidor: formValues.nombreDistribuidor,
                         rfc: formValues.rfc,
                         telefono: formValues.telefono,
                         direccion: formValues.direccion,
@@ -58,7 +75,13 @@ export const ContenidoFormulario = () => {
                         ofreceVentaDeConcentrador: boolValues.ofreceVentaDeConcentrador,
                         ofreceRentaDeConcentrador: boolValues.ofreceRentaDeConcentrador,
                     }
-                });
+                },
+                {                    
+                    headers:{
+                        'X-CSRFToken': csrftoken
+                    }
+                }
+                );
 
                 console.log(peticion);
 
