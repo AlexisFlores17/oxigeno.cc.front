@@ -60,7 +60,7 @@ export const ContenidoFormulario = () => {
             try {
                 const peticion= await axios.post(`${endPoints}potencial/formulario/`,{
                     params:{
-                        nombre_distribuidor: formValues.nombreDistribuidor,
+                        nombreDistribuidor: formValues.nombreDistribuidor,
                         rfc: formValues.rfc,
                         telefono: formValues.telefono,
                         direccion: formValues.direccion,
