@@ -58,34 +58,32 @@ export const ContenidoFormulario = () => {
             swal("¡Alerta!", "Por favor llene los campos Requeridos", "warning");
         }else{
             try {
-                const peticion= await axios.post(`${endPoints}potencial/formulario/`,{
-                    params:{
-                        nombreDistribuidor: formValues.nombreDistribuidor,
+                const peticion = await axios({
+                    method: 'post',
+                    url: `${endPoints}potencial/formulario/`,
+                    headers:{
+                        'X-CSRFToken': csrftoken
+                    },
+                    data: {
+                        nombre_distribuidor: formValues.nombreDistribuidor,
                         rfc: formValues.rfc,
                         telefono: formValues.telefono,
                         direccion: formValues.direccion,
                         horario: formValues.horario,
                         linkPagina: formValues.linkPagina,
                         whatsapp: formValues.whatsapp,
-                        aDomicilio: boolValues.aDomicilio,
-                        pagoConTarjeta: boolValues.pagoConTarjeta,
-                        ofreceVentaDeTanque: boolValues.ofreceVentaDeTanque,
-                        ofreceRentaDeTanque: boolValues.ofreceRentaDeTanque,
-                        ofreceRecargaDeTanque: boolValues.ofreceRecargaDeTanque,
-                        ofreceVentaDeConcentrador: boolValues.ofreceVentaDeConcentrador,
-                        ofreceRentaDeConcentrador: boolValues.ofreceRentaDeConcentrador,
+                        a_domicilio: boolValues.aDomicilio,
+                        pago_con_tarjeta: boolValues.pagoConTarjeta,
+                        ofrece_venta_de_tanque: boolValues.ofreceVentaDeTanque,
+                        ofrece_renta_de_tanque: boolValues.ofreceRentaDeTanque,
+                        ofrece_recarga_de_tanque: boolValues.ofreceRecargaDeTanque,
+                        ofrece_venta_de_concentrador: boolValues.ofreceVentaDeConcentrador,
+                        ofrece_renta_de_concentrador: boolValues.ofreceRentaDeConcentrador,
                     }
-                },
-                {                    
-                    headers:{
-                        'X-CSRFToken': csrftoken
-                    }
-                }
-                );
+        
+                });
 
-                console.log(peticion);
-
-                if (await peticion.status ===200) {
+                if (await peticion.status ===201) {
                     swal("Solicitud exitosa", "Nos contactaremos contigo lo más pronto posible", "success");
                     setButtonActivado(false);
                 }else{
