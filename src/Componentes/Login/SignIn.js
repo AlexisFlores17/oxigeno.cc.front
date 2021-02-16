@@ -72,8 +72,6 @@ export default function SignIn() {
             }
 
         });
-        
-        console.log(peticion);
 
         if (await peticion.status === 200) {
             
@@ -83,6 +81,7 @@ export default function SignIn() {
 
     } catch (error) {
         console.log(error)
+        swal("¡Ups!", "Error al iniciar Sesión", "error");
     }
     }
   }
