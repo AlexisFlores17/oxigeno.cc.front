@@ -1,4 +1,4 @@
-import React,{useContext} from 'react';
+import React,{useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,8 +13,7 @@ import axios from 'axios';
 import { endPoints } from '../../types/endPoints';
 import {useForm} from '../../hooks/useForm';
 import swal from 'sweetalert';
-import {types} from '../../types/types';
-import {useDispatch,useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {authLogin} from '../../actions/authActions';
 
 function Copyright() {
@@ -60,12 +59,15 @@ export default function SignIn({history}) {
   }
   const [ formValues, handleInputChange, reset ] = useForm( initialForm );
 
+  const [botonActivado, setBotonActivado] = useState(false)
+
   const onClickSubmit = async(e)=>{
     console.log(formValues);
     e.preventDefault();
     if(formValues.email==="" || formValues.password ===""){
       swal("¡Alerta!", "Por favor llene los campos Requeridos", "warning");
     }else{
+      setBotonActivado(true);
       try {
         const peticion= await axios({
             method: 'post',
@@ -77,7 +79,6 @@ export default function SignIn({history}) {
 
         });
 
-        console.log(peticion);
         if (await peticion.status === 200) {
 
           const {refresh,access}=peticion.data;
@@ -86,11 +87,13 @@ export default function SignIn({history}) {
           history.replace('/manager')
            
         }else{
+            setBotonActivado(false)
             swal("¡Ups!", "Lo sentimos, hubo un error al hacer el registro. Por favor intente más tarde", "error");
         }
 
     } catch (error) {
         console.log(error)
+        setBotonActivado(false);
         swal("¡Ups!", "Error al iniciar Sesión", "error");
     }
     }
@@ -132,6 +135,7 @@ export default function SignIn({history}) {
             autoComplete="current-password"
           />
           <Button
+            disabled={botonActivado}
             type="submit"
             fullWidth
             variant="contained"
