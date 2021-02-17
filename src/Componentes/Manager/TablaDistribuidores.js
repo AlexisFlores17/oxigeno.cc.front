@@ -6,21 +6,21 @@ import MaterialTable from 'material-table';
 
 export default function TablaDistribuidores() {
 
-  // const [data, setData] = useState([]); 
+  const [data, setData] = useState([]); 
 
-  // useEffect(() => {
-  //   getData();
-  // },[]);
+  useEffect(() => {
+    getData();
+  },[]);
 
-  // async function getData() {
-  //   try {
-  //     const dataPeticion = await axios.get(endPoints,{});
-  //     const dataBase= await dataPeticion.data;
-  //     setData(dataBase);
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
+  async function getData() {
+    try {
+      const dataPeticion = await axios.get(`${endPoints}data`,{});
+      const dataBase= await dataPeticion.data;
+      setData(dataBase);
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
 
   return (
