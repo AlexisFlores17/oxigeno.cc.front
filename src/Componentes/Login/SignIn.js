@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
 export default function SignIn({history}) {
   const classes = useStyles();
   
-  const {dispatch} = useContext(AuthContext);
+  const {user, dispatch} = useContext(AuthContext);
 
   const initialForm = {
     email: '',
@@ -76,6 +76,7 @@ export default function SignIn({history}) {
 
         });
 
+        console.log(peticion);
         if (await peticion.status === 200) {
           
            dispatch({
@@ -84,7 +85,7 @@ export default function SignIn({history}) {
                 name:"alex"
              }
            })
-
+           localStorage.setItem('token',JSON.stringify(peticion.data))
            history.replace('/manager')
            
         }else{
