@@ -13,8 +13,9 @@ import axios from 'axios';
 import { endPoints } from '../../types/endPoints';
 import {useForm} from '../../hooks/useForm';
 import swal from 'sweetalert';
-import { AuthContext } from '../../auth/AuthContext';
 import {types} from '../../types/types';
+import {useDispatch,useSelector} from "react-redux";
+import {authLogin} from '../../actions/authActions';
 
 function Copyright() {
   return (
@@ -50,8 +51,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn({history}) {
   const classes = useStyles();
-  
-  const {user, dispatch} = useContext(AuthContext);
+
+  const dispatch = useDispatch();
 
   const initialForm = {
     email: '',
@@ -78,15 +79,11 @@ export default function SignIn({history}) {
 
         console.log(peticion);
         if (await peticion.status === 200) {
-          
-           dispatch({
-             type:types.login,
-             payload:{
-                name:"alex"
-             }
-           })
-           localStorage.setItem('token',JSON.stringify(peticion.data))
-           history.replace('/manager')
+
+          const {refresh,access}=peticion.data;
+          // localStorage.setItem("user",JSON.stringify(peticion.data));
+          dispatch( authLogin(refresh,access));
+          history.replace('/manager')
            
         }else{
             swal("¡Ups!", "Lo sentimos, hubo un error al hacer el registro. Por favor intente más tarde", "error");

@@ -10,17 +10,17 @@ import { FormularioDist } from '../Componentes/FormularioDist';
 import Dashboard from '../Componentes/Manager/Dashboard';
 import SignIn from '../Componentes/Login/SignIn';
 import { PrivateRoute } from './PrivateRoute';
-import { AuthContext } from '../auth/AuthContext';
+import {useSelector} from "react-redux";
 
 export const AppRouter = () => {
+    const state = useSelector( state => state.authReducer );
 
-    const {user} = useContext(AuthContext)
     return (    
         <Router>
             <div>    
                 <Switch>
                     
-                    <PrivateRoute path="/manager" component={Dashboard} isAutenticated={user.logged} />
+                    <PrivateRoute path="/manager" component={Dashboard} isAutenticated={state.logged} />
                     <Route exact path="/oxigeno/formulario" component={FormularioDist} />
                     <Route exact path="/login" component={SignIn} />
                     <Route exact path="/"           component={App} />
