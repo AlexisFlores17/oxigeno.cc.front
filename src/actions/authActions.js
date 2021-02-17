@@ -12,9 +12,6 @@ export const authLogin = (refresh,access)=>{
 
 export const authLogout = (value)=>{
     return{
-        type: types.logout,
-        payload:{
-            logged:false
-        }
+        type: types.logout
     }
 }
