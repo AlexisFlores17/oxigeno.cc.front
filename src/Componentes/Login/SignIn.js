@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,7 +13,8 @@ import axios from 'axios';
 import { endPoints } from '../../types/endPoints';
 import {useForm} from '../../hooks/useForm';
 import swal from 'sweetalert';
-import {useHistory } from "react-router-dom";
+import { AuthContext } from '../../auth/AuthContext';
+import {types} from '../../types/types';
 
 function Copyright() {
   return (
@@ -47,8 +48,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+export default function SignIn({history}) {
   const classes = useStyles();
+  
+  const {dispatch} = useContext(AuthContext);
 
   const initialForm = {
     email: '',
@@ -74,7 +77,16 @@ export default function SignIn() {
         });
 
         if (await peticion.status === 200) {
-            
+          
+           dispatch({
+             type:types.login,
+             payload:{
+                name:"alex"
+             }
+           })
+
+           history.replace('/manager')
+           
         }else{
             swal("¡Ups!", "Lo sentimos, hubo un error al hacer el registro. Por favor intente más tarde", "error");
         }

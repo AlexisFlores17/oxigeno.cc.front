@@ -11,7 +11,7 @@ import Dashboard from '../Componentes/Manager/Dashboard';
 import SignIn from '../Componentes/Login/SignIn';
 
 export const AppRouter = () => {
-    return (
+    return (    
         <Router>
             <div>    
                 <Switch>

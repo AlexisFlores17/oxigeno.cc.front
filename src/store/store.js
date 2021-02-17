@@ -1,4 +1,5 @@
 import { createStore, combineReducers } from 'redux';
+import { authReducer } from '../auth/authReducer';
 import { filtrosAvanzadosOrigen } from '../reducers/filtrosAvanzadosOrigen';
 import {filtrosAvanzadosReducer} from "../reducers/filtrosAvanzadosReducer";
 
