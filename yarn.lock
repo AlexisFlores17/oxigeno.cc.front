@@ -4285,10 +4285,10 @@
   "resolved" "https://registry.npmjs.org/date-fns/-/date-fns-2.17.0.tgz"
   "version" "2.17.0"
 
-"dateformat@^4.5.0":
-  "integrity" "sha512-YkS64mgmj9At0Ua9p3qyqoHqjqkOTV/FGCluRIcrFNbhFmltQGl2x/DFBgpbRRPTNPoyxfzjqgNaGYjMbfnsdg=="
-  "resolved" "https://registry.npmjs.org/dateformat/-/dateformat-4.5.0.tgz"
-  "version" "4.5.0"
+"dateformat@^4.5.1":
+  "integrity" "sha512-OD0TZ+B7yP7ZgpJf5K2DIbj3FZvFvxgFUuaqA/V5zTjAtAAXZ1E8bktHxmAGs4x5b7PflqA9LeQ84Og7wYtF7Q=="
+  "resolved" "https://registry.npmjs.org/dateformat/-/dateformat-4.5.1.tgz"
+  "version" "4.5.1"
 
 "debounce@^1.1.0", "debounce@^1.2.0":
   "integrity" "sha512-mYtLl1xfZLi1m4RtQYlZgJUNQjl4ZxVnHzIR8nLLgi4q1YT8o/WM+MK/f8yfcc9s5Ir5zRaPZyZU6xs1Syoocg=="

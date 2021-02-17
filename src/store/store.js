@@ -2,8 +2,10 @@ import { createStore, combineReducers } from 'redux';
 import { authReducer } from '../reducers/authReducer';
 import { filtrosAvanzadosOrigen } from '../reducers/filtrosAvanzadosOrigen';
 import {filtrosAvanzadosReducer} from "../reducers/filtrosAvanzadosReducer";
+import { paginaReducer } from '../reducers/paginaReducer';
 
 const reducers = combineReducers({
+    paginaReducer:paginaReducer,
     authReducer: authReducer,
     filtrosAvanzadosCiudad: filtrosAvanzadosOrigen,
     filtrosAvanzados: filtrosAvanzadosReducer

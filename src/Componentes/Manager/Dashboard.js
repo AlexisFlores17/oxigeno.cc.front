@@ -8,12 +8,12 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { authLogout } from '../../actions/authActions';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import TablaDistribuidores from './TablaDistribuidores';
+import {PaginaDistribuidor} from './PaginaDistribuidor';
 
 
 const drawerWidth = 240;
@@ -100,6 +100,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Dashboard({history}) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
+  const paginaDistribuidor = useSelector( state => state.paginaReducer );
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -145,9 +146,10 @@ export default function Dashboard({history}) {
           <Grid container spacing={3}>
             {/* Recent Orders */}
             <Grid item xs={12}>
-              <Paper className={classes.paper}>
+              {
+                paginaDistribuidor.paginaDistribuidor ? <PaginaDistribuidor /> :
                 <TablaDistribuidores />
-              </Paper>
+              }
             </Grid>
           </Grid>
         </Container>

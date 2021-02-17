@@ -20,7 +20,22 @@
     align-items: center;
   
   }
+
+  .circularProgressManager{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+
+  }
   
+  .managerContainer{
+    display: flex;
+    height: 70vh;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
   .sinResultados{
     display: flex;
     flex-flow: row wrap;
