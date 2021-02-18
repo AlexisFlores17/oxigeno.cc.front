@@ -42,7 +42,6 @@ export default function TablaDistribuidores() {
       const dataPeticion = await axios.get(`${endPoints}data`,{});
       const dataBase= await dataPeticion.data;
       setData(dataBase.results);
-      console.log(dataBase.results)
 
       if (dataPeticion.status === 200 ) {
         setCargado(true);

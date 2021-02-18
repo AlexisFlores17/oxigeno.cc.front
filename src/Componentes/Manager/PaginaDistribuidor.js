@@ -4,10 +4,16 @@ import { endPointsManager } from '../../types/endPoints';
 import swal from 'sweetalert';
 import axios from 'axios';
 
+import { tablaDistribuidor } from '../../actions/paginaActions';
+
 export const PaginaDistribuidor = () => {
 
     const state = useSelector( state => state.paginaReducer );
-
+    const [dataDistribuidor, setDataDistribuidor] = useState({});
+    const dispatch = useDispatch();
+    const onClickRegresar = ()=>{
+        dispatch(tablaDistribuidor());
+    }
     useEffect(() => {
         getData();
       },[]);
@@ -15,17 +21,25 @@ export const PaginaDistribuidor = () => {
       async function getData() {
         try {
           const dataPeticionInicial = await axios.get(`${endPointsManager}${state.id}`,{});
-          console.log(dataPeticionInicial);
+          const dataDistrib = await dataPeticionInicial.data;
+    
+          if (dataPeticionInicial.status === 200) {
+            setDataDistribuidor(dataDistrib);
+          }
 
         } catch (error) {
           swal("¡Ups!", "Lo sentimos, hubo un error al cargar distribuidor. Por favor intente más tarde", "error");
           console.log(error)
         }
       }
+    
+
 
     return (
         <div>
             Hola soy Distribuidor
+            <button className="btn btn-primary" onClick={()=>onClickRegresar()}>Regresar</button>
+
         </div>
     )
 }
