@@ -20,3 +20,13 @@
 .nombreForm:hover{
     color:black;
 }
+
+.containerBuscadorManager{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.botonBuscar{
+    margin-right: 10px;
+}

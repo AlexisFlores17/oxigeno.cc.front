@@ -29,7 +29,7 @@ export const ContenidoFormulario = () => {
         linkPagina:'',
         whatsapp:'',
     }
-    const [ formValues, handleInputChange, reset ] = useForm( initialForm );
+    const [ formValues, handleInputChange ] = useForm( initialForm );
 
     function getCookie(name) {
         let cookieValue = null;
