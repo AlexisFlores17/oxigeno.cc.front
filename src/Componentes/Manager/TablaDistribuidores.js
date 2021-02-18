@@ -162,7 +162,7 @@ export default function TablaDistribuidores() {
                   </TableBody>
               </Table>
             </TableContainer>
-            :<CircularProgress className="circulo" size={200} />
+            :<div className="sinResultados">No se encontraron resultados</div>
           }
         </Paper>
         </>:
