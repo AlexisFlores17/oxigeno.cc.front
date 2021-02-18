@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import { useDispatch,useSelector } from 'react-redux';
-import { endPointsManager } from '../../types/endPoints';
+import { endPoints } from '../../types/endPoints';
 import swal from 'sweetalert';
 import axios from 'axios';
 
@@ -23,7 +23,7 @@ export const PaginaDistribuidor = () => {
   
     async function getData() {
       try {
-        const dataPeticionInicial = await axios.get(`${endPointsManager}${state.id}`,{});
+        const dataPeticionInicial = await axios.get(`${endPoints}data/${state.id}`,{});
         const dataDistrib = await dataPeticionInicial.data;
   
         if (dataPeticionInicial.status === 200) {
