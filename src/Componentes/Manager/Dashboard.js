@@ -107,7 +107,6 @@ export default function Dashboard({history}) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   const dispatch = useDispatch();
 

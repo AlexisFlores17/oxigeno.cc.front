@@ -11,6 +11,9 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import dateFormat from "dateformat";
+import { useDispatch } from 'react-redux';
+import { paginaDistribuidor } from '../../actions/paginaActions';
+import swal from 'sweetalert';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -25,6 +28,10 @@ export default function TablaDistribuidores() {
   const classes = useStyles();
   const [cargado, setCargado] = useState(false)
   const [data, setData] = useState([]); 
+  const dispatch = useDispatch();
+  const clickPagina=(id)=>{
+    dispatch(paginaDistribuidor(id));
+  }
 
   useEffect(() => {
     getData();
@@ -35,7 +42,8 @@ export default function TablaDistribuidores() {
       const dataPeticion = await axios.get(`${endPoints}data`,{});
       const dataBase= await dataPeticion.data;
       setData(dataBase.results);
-      console.log(dataBase.results);
+      console.log(dataBase.results)
+
       if (dataPeticion.status === 200 ) {
         setCargado(true);
       }
@@ -43,7 +51,7 @@ export default function TablaDistribuidores() {
         setCargado(false);
       }
     } catch (error) {
-      
+      swal("¡Ups!", "Lo sentimos, hubo un error al cargar distribuidores. Por favor intente más tarde", "error");
       console.log(error)
     }
   }
@@ -65,7 +73,7 @@ export default function TablaDistribuidores() {
               {data?.map((distribuidor) => (
                   <TableRow key={distribuidor.id}>
                     <TableCell component="th" scope="row">
-                      {distribuidor.nombre_distribuidor}
+                      <div onClick={()=>clickPagina(distribuidor.id)} className="nombreForm" >{distribuidor.nombre_distribuidor}</div>
                     </TableCell>
                     <TableCell align="right">{<a className="telForm" href={distribuidor.telefono ==="0" ? "#":`tel:${distribuidor.telefono}`}>{distribuidor.telefono ==="0" ?<span>No hay Teléfono</span>:distribuidor.telefono}</a>}</TableCell>
                     <TableCell align="right">
