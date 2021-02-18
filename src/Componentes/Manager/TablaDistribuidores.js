@@ -40,7 +40,7 @@ export default function TablaDistribuidores() {
   const initialForm = {
     buscar: ''
   }
-  const [ formValues, handleInputChange ] = useForm( initialForm );
+  const [ formValues, handleInputChange,reset ] = useForm( initialForm );
 
   const onClickButtonBuscar =(e)=>{
     e.preventDefault();
@@ -51,7 +51,11 @@ export default function TablaDistribuidores() {
   useEffect(() => {
     getData();
   },[]);
-
+  const onClickReset= (e)=>{
+    e.preventDefault()
+    reset();
+    getData();
+  }
   async function getDataFiltro() {
     setRestablecer(true);
     try {
@@ -114,6 +118,7 @@ export default function TablaDistribuidores() {
             }}
             name="buscar"
             onChange={handleInputChange}
+            value={formValues.buscar}
             variant="outlined"
             autoComplete="off"
           />
@@ -129,7 +134,7 @@ export default function TablaDistribuidores() {
           <div className="botonRestablecer">
             <button
               className="btn btn-success"
-              onClick={(e)=>getData()}
+              onClick={(e)=>onClickReset(e)}
               disabled={restablecer}
             >
               Restablecer
