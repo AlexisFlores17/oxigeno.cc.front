@@ -44,12 +44,38 @@ export default function TablaDistribuidores() {
 
   const onClickButtonBuscar =(e)=>{
     e.preventDefault();
+    getDataFiltro();
     setData({})
   }
 
   useEffect(() => {
     getData();
   },[]);
+
+  async function getDataFiltro() {
+    setRestablecer(true);
+    try {
+      const dataPeticion = await axios.get(`${endPoints}data`,{
+        params:{
+          nombreComo: formValues.buscar
+        }
+      });
+      
+      const dataBase= await dataPeticion.data;
+      setData(dataBase.results);
+
+      if (dataPeticion.status === 200 ) {
+        setCargado(true);
+        setRestablecer(false);
+      }
+      else{
+        setCargado(false);
+      }
+    } catch (error) {
+      swal("¡Ups!", "Lo sentimos, hubo un error al cargar distribuidores. Por favor intente más tarde", "error");
+      console.log(error)
+    }
+  }
 
   async function getData() {
     setRestablecer(true);
@@ -89,6 +115,7 @@ export default function TablaDistribuidores() {
             name="buscar"
             onChange={handleInputChange}
             variant="outlined"
+            autoComplete="off"
           />
           <div className="botonBuscar">
             <button
@@ -135,7 +162,7 @@ export default function TablaDistribuidores() {
                   </TableBody>
               </Table>
             </TableContainer>
-            :<div>noay</div>
+            :<CircularProgress className="circulo" size={200} />
           }
         </Paper>
         </>:
