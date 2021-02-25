@@ -7,7 +7,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import {useDispatch,useSelector} from "react-redux";
-import {filtroDomicilio,filtroTarjeta,filtroTanqueVenta,filtroTanqueRenta,filtroTanqueRecarga,filtroConcentradorVenta,filtroConcentradorRenta, filtroAbiertoFin, filtroAbierto24, filtroGratis} from "../actions/filtrosAvanzados";
+import {filtroDomicilio,filtroTarjeta,filtroTanqueVenta,filtroTanqueRenta,filtroTanqueRecarga,filtroConcentradorVenta,filtroConcentradorRenta, filtroAbierto24, filtroGratis, filtroAbiertoSabados, filtroAbiertoDomingos} from "../actions/filtrosAvanzados";
 
 export const MenuLateral = () =>{
 
@@ -72,12 +72,15 @@ export const MenuLateral = () =>{
                 dispatch( filtroTarjeta(!state.tarjetaSwitch) );
                 break;
             case 7:
-                dispatch( filtroAbiertoFin(!state.abiertoFin) );
+                dispatch( filtroAbiertoSabados(!state.abreSabado) );
                 break;
             case 8:
-                dispatch( filtroAbierto24(!state.abierto24) );
+                dispatch( filtroAbiertoDomingos(!state.abreDomingo) );
                 break;
             case 9:
+                dispatch( filtroAbierto24(!state.abierto24) );
+                break;
+            case 10:
                 dispatch( filtroGratis(!state.gratis) );
                 break;
         
@@ -160,7 +163,7 @@ export const MenuLateral = () =>{
                             <Switch
                                 className="switch"
                                 checked={state.gratis}
-                                onChange={() => cambiarFiltro(9)}
+                                onChange={() => cambiarFiltro(10)}
                                 name="checkedA"
                                 color="primary"
                                 inputProps={{ 'aria-label': 'secondary checkbox' }}
@@ -225,12 +228,17 @@ export const MenuLateral = () =>{
                     <div className="menu-checkbox">
                         <FormGroup>
                             <FormControlLabel
-                                control={<Checkbox color="primary" checked={state.abiertoFin} onChange={() => cambiarFiltro(7)} name="checkedA"/>}
-                                label="Abierto fines de semana"
+                                control={<Checkbox color="primary" checked={state.abreSabado} onChange={() => cambiarFiltro(7)} name="checkedA"/>}
+                                label="Abierto sábados"
                                 style={{ marginLeft: 0}}
                             />
                             <FormControlLabel
-                                control={<Checkbox color="primary" checked={state.abierto24} onChange={() => cambiarFiltro(8) } name="checkedA" />}
+                                control={<Checkbox color="primary" checked={state.abreDomingo} onChange={() => cambiarFiltro(8)} name="checkedA"/>}
+                                label="Abierto domingos"
+                                style={{ marginLeft: 0}}
+                            />
+                            <FormControlLabel
+                                control={<Checkbox color="primary" checked={state.abierto24} onChange={() => cambiarFiltro(9) } name="checkedA" />}
                                 label="Abierto 24h"
                                 style={{ marginLeft: 0}}
                             />

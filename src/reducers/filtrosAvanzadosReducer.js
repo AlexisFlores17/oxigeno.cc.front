@@ -10,7 +10,8 @@ export const filtrosAvanzadosReducer = ( initialState = {
     concentradorRenta:false,
     domicilioSwitch:false,
     tarjetaSwitch:false,
-    abiertoFin: false,
+    abreSabado: false,
+    abreDomingo: false,
     abierto24: false,
     gratis: false
 }, action )=>{

@@ -67,11 +67,20 @@ export const filtroTarjeta = (value)=>{
     }
 }
 
-export const filtroAbiertoFin = (value)=>{
+export const filtroAbiertoSabados = (value)=>{
     return{
         type: types.CambiarFiltro,
         payload:{
-            abiertoFin: value
+            abreSabado: value
+        }
+    }
+}
+
+export const filtroAbiertoDomingos = (value)=>{
+    return{
+        type: types.CambiarFiltro,
+        payload:{
+            abreDomingo: value
         }
     }
 }
