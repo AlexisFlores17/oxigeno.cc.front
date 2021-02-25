@@ -78,7 +78,19 @@ const FormLine = styled.span({
 
 })
 
-const Niveles = [
+const NivelesRenta = [
+    {
+        value: 'Si',
+        label: 'Sí',
+    },
+    {
+        value: 'No',
+        label: 'No',
+    },
+]
+    ;
+
+const NivelesVenta = [
     {
         value: 'Si',
         label: 'Sí',
@@ -116,21 +128,34 @@ function getModalStyle() {
     };
 }
 
-export const ContenidoFormulario = () => {
+export default function FormularioDistribuidor() {
 
     //checkbox bool - ofrece renta
     //int disponibilidad de venta
     //
+
+    const [OfreceRenta, setOfreceRenta] = React.useState();
+    const handleChangeTipoRenta = (event) => {
+        setOfreceRenta(event.target.value);
+    };
+
+    const [DisponibilidadRenta, setDisponibilidadRenta] = React.useState();
+    const handleDisponibilidadRenta = (event) => {
+        setDisponibilidadRenta(event.target.value);
+    };
+
+
+    const [OfreceVenta, setOfreceVenta] = React.useState();
+    const handleChangeTipoVenta = (event) => {
+        setOfreceVenta(event.target.value);
+    };
 
     const [DisponibilidadVenta, setDisponibilidadVenta] = React.useState();
     const handleDisponibilidadVenta = (event) => {
         setDisponibilidadVenta(event.target.value);
     };
 
-    const [OfreceRenta, setOfreceRenta] = React.useState();
-    const handleChangeTipoRenta = (event) => {
-        setOfreceRenta(event.target.value);
-    };
+
     const [valueApellidoP, setValueApellidoP] = React.useState();
     const handleChangeApellidoP = (event) => {
         setValueApellidoP(event.target.value);
@@ -207,36 +232,24 @@ export const ContenidoFormulario = () => {
 
     const AllDataUsers = () => {
         return {
-            b01_us_Nombre: valueNombre,
-            b01_us_Apellido: valueApellidoP + " " + valueApellidoM,
-            b01_us_clave: valueClave,
-            b01_us_password: values.password,
-            b01_us_role: tipoNivel
+
         }
 
     }
     const BasicData = {
-        b01_us_Nombre: 'Nombre',
-        b01_us_Apellido: 'Apellidos',
-        b01_us_clave: 'Clave',
-        b01_us_password: 'Contraseña',
-        b01_us_role: 'Rol'
+
     }
 
 
     const body = (
         <div style={modalStyle} className={classes.paper}>
-            <h2 id="simple-modal-title">Se va a dar de Alta el Usuario:</h2>
+            <h2 id="simple-modal-title">Se modificaran los siguientes datos:</h2>
 
             {Object.keys(AllDataUsers()).map(key =>
                 <BigText key={key}>{BasicData[key] + " : " + AllDataUsers()[key]}</BigText>)}
 
-            <FormLine>
-                <Button to="/VisualizarAdmin" onClick={() => { UploadData(); handleClose(); history.push("/VisualizarAdmin"); }} variant="contained" color="primary" >Aceptar</Button>
-                <Button onClick={handleClose} variant="contained" color="secondary" >Regresar</Button>
-            </FormLine>
 
->>>>>>> Stashed changes
+
         </div>
     );
 
@@ -257,11 +270,32 @@ export const ContenidoFormulario = () => {
                     id="OfreceRenta"
                     select
                     label="Ofrece Renta"
-                    value={tipoRenta}
+                    value={OfreceRenta}
                     onChange={handleChangeTipoRenta}
 
                 >
-                    {Niveles.map((option) => (
+                    {NivelesRenta.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                        </MenuItem>
+                    ))}
+                </BigTextField>
+
+                <BigTextField id="DisponibilidadRenta" label="Disponibilidad Renta"
+                    value={DisponibilidadRenta}
+                    onChange={handleDisponibilidadRenta} />
+            </FormLine>
+
+            <FormLine>
+                <BigTextField
+                    id="OfreceVenta"
+                    select
+                    label="Ofrece Venta"
+                    value={OfreceVenta}
+                    onChange={handleChangeTipoVenta}
+
+                >
+                    {NivelesVenta.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
                             {option.label}
                         </MenuItem>
@@ -269,47 +303,8 @@ export const ContenidoFormulario = () => {
                 </BigTextField>
 
                 <BigTextField id="DisponibilidadVenta" label="Disponibilidad Venta"
-                    value={tipoDisponibilidad}
+                    value={DisponibilidadVenta}
                     onChange={handleDisponibilidadVenta} />
-            </FormLine>
-            <FormLine>
-                <BigTextField id="Clave" label="Clave"
-                    value={valueClave}
-                    onChange={handleChangeClave} />
-            </FormLine>
-            <FormLine>
-                <BigPassword>
-                    <InputLabel htmlFor="standard-adornment-password" >Password</InputLabel>
-                    <Input
-
-
-                        id="standard-adornment-password"
-
-                        type={values.showPassword ? 'text' : 'password'}
-                        value={values.password}
-
-                        onChange={handleChangePassword('password')}
-
-                        error={valueError}
-                        endAdornment={
-                            <InputAdornment position="end">
-                                <IconButton
-                                    aria-label="toggle password visibility"
-                                    onClick={handleClickShowPassword}
-                                    onMouseDown={handleMouseDownPassword}
-                                >
-                                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                                </IconButton>
-                            </InputAdornment>
-                        }
-                    />
-                    <FormHelperText id="component-helper-text">{valueHelperText}</FormHelperText>
-
-                </BigPassword>
-            </FormLine>
-            <FormLine>
-
-                <BigTextField id="UT" label="Unidad Territorial" value={valueUT} onChange={handleChangeValueUT} />
             </FormLine>
             <FormLine>
                 <Button variant="contained" color="primary" type='submit'>
@@ -330,3 +325,4 @@ export const ContenidoFormulario = () => {
 
     )
 }
+
