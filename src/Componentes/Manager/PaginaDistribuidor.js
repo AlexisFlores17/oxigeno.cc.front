@@ -43,7 +43,11 @@ export const PaginaDistribuidor = () => {
 
   return (
     <div>
-      { cargado ? dataDistribuidor.nombre_distribuidor : <div>Cargando</div>} <br></br>
+      { cargado ?        
+      <>
+        <div>{dataDistribuidor.nombre_distribuidor}</div>
+        <FormularioDistribuidor />
+      </> : <div>Cargando</div>} <br></br>
       <button className="btn btn-primary" onClick={() => onClickRegresar()}>Regresar</button>
 
     </div>

@@ -1,11 +1,4 @@
 import React from 'react';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import IconButton from '@material-ui/core/IconButton';
-import InputLabel from '@material-ui/core/InputLabel';
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import Input from '@material-ui/core/Input';
-import clsx from 'clsx';
 import styled from 'styled-components';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
@@ -21,6 +14,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { LineStyle } from '@material-ui/icons';
 import { useHistory } from 'react-router-dom';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import { endPoints } from '../../types/endPoints';
+import axios from 'axios';
 
 
 
@@ -130,6 +125,40 @@ function getModalStyle() {
 
 export default function FormularioDistribuidor() {
 
+    const submit = async(e)=>{
+        e.preventDefault();
+
+        // if (formValues.nombreDistribuidor ==="" || formValues.rfc==="" || formValues.telefono===""|| formValues.direccion==="" || formValues.horario==="") {
+        //     console.log("Error");
+        // }else{
+            try {
+                const peticion = await axios({
+                    method: 'post',
+                    url: `${endPoints}manager/distribuidor/`,
+                    // headers:{
+                    //     'X-CSRFToken': csrftoken
+                    // },
+                    data: {
+                        "tanqueOfreceRenta": false,
+                        "tanqueDisponibilidadRenta": 3,
+                        "tanqueOfreceVenta": false,
+                        "tanqueDisponibilidadVenta": 2,
+                        "tanqueOfreceRecarga": true,
+                        "tanqueDisponibilidadRecarga": 2,
+                        "concentradorOfreceRenta": false,
+                        "concentradorDisponibilidadRenta": 0,
+                        "concentradorOfreceVenta": false,
+                        "concentradorDisponibilidadVenta": 0,
+                        "distribuidorId": 25
+                    }
+        
+                });
+
+            } catch (error) {
+                console.log(error);
+            }
+        // }
+    }
     //checkbox bool - ofrece renta
     //int disponibilidad de venta
     //
