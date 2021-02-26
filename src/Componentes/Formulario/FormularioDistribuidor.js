@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import { endPoints } from '../../types/endPoints';
 import axios from 'axios';
+import {useSelector} from "react-redux";
 
 
 
@@ -84,6 +85,8 @@ const NivelesVenta = [
 
 export default function FormularioDistribuidor(props) {
 
+    const state = useSelector( state => state.authReducer );
+
     const submit = async (e) => {
         e.preventDefault();
 
@@ -94,24 +97,26 @@ export default function FormularioDistribuidor(props) {
             const peticion = await axios({
                 method: 'post',
                 url: `${endPoints}manager/distribuidor/`,
-                // headers:{
-                //     'X-CSRFToken': csrftoken
-                // },
+                headers:{
+                    'Authorization': `JWT ${state.access}`
+                },
                 data: {
-                    "tanqueOfreceRenta": false,
-                    "tanqueDisponibilidadRenta": 3,
-                    "tanqueOfreceVenta": false,
-                    "tanqueDisponibilidadVenta": 2,
-                    "tanqueOfreceRecarga": true,
-                    "tanqueDisponibilidadRecarga": 2,
-                    "concentradorOfreceRenta": false,
-                    "concentradorDisponibilidadRenta": 0,
-                    "concentradorOfreceVenta": false,
-                    "concentradorDisponibilidadVenta": 0,
-                    "distribuidorId": 25
+                    "tanqueOfreceRenta": OfreceRecargaTanques,
+                    "tanqueDisponibilidadRenta": DisponibilidadRentaTanques,
+                    "tanqueOfreceVenta": OfreceVentaTanques,
+                    "tanqueDisponibilidadVenta": DisponibilidadVentaTanques,
+                    "tanqueOfreceRecarga": OfreceRecargaTanques,
+                    "tanqueDisponibilidadRecarga": DisponibilidadRecargaTanques,
+                    "concentradorOfreceRenta": OfreceRentaConcentradores,
+                    "concentradorDisponibilidadRenta": DisponibilidadRentaConcentradores,
+                    "concentradorOfreceVenta": OfreceVentaConcentradores,
+                    "concentradorDisponibilidadVenta": DisponibilidadVentaConcentradores,
+                    "distribuidorId": props.distribuidorId
                 }
 
             });
+
+            console.log(peticion);
 
         } catch (error) {
             console.log(error);
@@ -142,6 +147,17 @@ export default function FormularioDistribuidor(props) {
     const handleDisponibilidadVentaTanques = (event) => {
         setDisponibilidadVentaTanques(event.target.value);
     };
+
+    const [OfreceRecargaTanques, setOfreceRecargaTanques] = React.useState(props.data.tanques[0].recarga);
+    const handleChangeTipoRecargaTanques = (event) => {
+        setOfreceRecargaTanques(event.target.value);
+    };
+
+    const [DisponibilidadRecargaTanques, setDisponibilidadRecargaTanques] = React.useState();
+    const handleDisponibilidadRecargaTanques = (event) => {
+        setDisponibilidadRecargaTanques(event.target.value);
+    };
+
 
     // Concentradores:
 
@@ -221,6 +237,27 @@ export default function FormularioDistribuidor(props) {
                     onChange={handleDisponibilidadVentaTanques} />
             </FormLine>
 
+            <FormLine>
+                <BigTextField
+                    id="OfreceRecarga"
+                    select
+                    label="Ofrece Recarga"
+                    value={OfreceRecargaTanques}
+                    onChange={handleChangeTipoRecargaTanques}
+
+                >
+                    {NivelesVenta.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                        </MenuItem>
+                    ))}
+                </BigTextField>
+
+                <BigTextField id="DisponibilidadRecarga" label="Disponibilidad Recarga"
+                    value={DisponibilidadRecargaTanques}
+                    onChange={handleDisponibilidadRecargaTanques} />
+            </FormLine>
+
 
 
             <FormLine>
@@ -269,7 +306,7 @@ export default function FormularioDistribuidor(props) {
             </FormLine>
 
             <FormLine>
-                <Button variant="contained" color="primary" type='submit'>
+                <Button variant="contained" color="primary" type='submit' onClick={(e)=>{submit(e)}}>
                     Actualizar
                 </Button>
             </FormLine>
