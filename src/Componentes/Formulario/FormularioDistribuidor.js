@@ -3,19 +3,12 @@ import styled from 'styled-components';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
 import Button from '@material-ui/core/Button';
-import Modal from '@material-ui/core/Modal';
 import { makeStyles } from '@material-ui/core/styles';
-import { LineStyle } from '@material-ui/icons';
-import { useHistory } from 'react-router-dom';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import { endPoints } from '../../types/endPoints';
 import axios from 'axios';
+
 
 
 
@@ -26,24 +19,13 @@ const BigTextField = styled(TextField)({
 
 })
 
-const BigText = styled(Typography)({
+const Subtitle = styled(Typography)({
     width: '100%',
-    marginRight: '5% !important',
-    marginLeft: '5% !important'
-
-})
-
-const BigPassword = styled(FormControl)({
-    width: '100%',
-    marginRight: '5% !important',
-    marginLeft: '5% !important'
-
-})
-
-const SmallText = styled(Typography)({
-    width: '30%',
-    marginRight: '5% !important',
-    marginLeft: '5% !important'
+    fontSize: '25px',
+    marginLeft: '2% !important',
+    marginTop: '-3% !important',
+    marginBottom: '-10% !important',
+    textAlign: 'center'
 
 })
 
@@ -75,11 +57,11 @@ const FormLine = styled.span({
 
 const NivelesRenta = [
     {
-        value: 'Si',
+        value: true,
         label: 'Sí',
     },
     {
-        value: 'No',
+        value: false,
         label: 'No',
     },
 ]
@@ -87,220 +69,123 @@ const NivelesRenta = [
 
 const NivelesVenta = [
     {
-        value: 'Si',
+        value: true,
         label: 'Sí',
     },
     {
-        value: 'No',
+        value: false,
         label: 'No',
     },
 ]
     ;
 
-const useStyles = makeStyles((theme) => ({
-    paper: {
-        position: 'absolute',
-        width: 400,
-        backgroundColor: theme.palette.background.paper,
-        border: '2px solid #000',
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
-    },
-}));
 
-function rand() {
-    return Math.round(Math.random() * 20) - 10;
-}
 
-function getModalStyle() {
-    const top = 50 + rand();
-    const left = 50 + rand();
 
-    return {
-        top: `${top}%`,
-        left: `${left}%`,
-        transform: `translate(-${top}%, -${left}%)`,
-    };
-}
+export default function FormularioDistribuidor(props) {
 
-export default function FormularioDistribuidor() {
-
-    const submit = async(e)=>{
+    const submit = async (e) => {
         e.preventDefault();
 
         // if (formValues.nombreDistribuidor ==="" || formValues.rfc==="" || formValues.telefono===""|| formValues.direccion==="" || formValues.horario==="") {
         //     console.log("Error");
         // }else{
-            try {
-                const peticion = await axios({
-                    method: 'post',
-                    url: `${endPoints}manager/distribuidor/`,
-                    // headers:{
-                    //     'X-CSRFToken': csrftoken
-                    // },
-                    data: {
-                        "tanqueOfreceRenta": false,
-                        "tanqueDisponibilidadRenta": 3,
-                        "tanqueOfreceVenta": false,
-                        "tanqueDisponibilidadVenta": 2,
-                        "tanqueOfreceRecarga": true,
-                        "tanqueDisponibilidadRecarga": 2,
-                        "concentradorOfreceRenta": false,
-                        "concentradorDisponibilidadRenta": 0,
-                        "concentradorOfreceVenta": false,
-                        "concentradorDisponibilidadVenta": 0,
-                        "distribuidorId": 25
-                    }
-        
-                });
+        try {
+            const peticion = await axios({
+                method: 'post',
+                url: `${endPoints}manager/distribuidor/`,
+                // headers:{
+                //     'X-CSRFToken': csrftoken
+                // },
+                data: {
+                    "tanqueOfreceRenta": false,
+                    "tanqueDisponibilidadRenta": 3,
+                    "tanqueOfreceVenta": false,
+                    "tanqueDisponibilidadVenta": 2,
+                    "tanqueOfreceRecarga": true,
+                    "tanqueDisponibilidadRecarga": 2,
+                    "concentradorOfreceRenta": false,
+                    "concentradorDisponibilidadRenta": 0,
+                    "concentradorOfreceVenta": false,
+                    "concentradorDisponibilidadVenta": 0,
+                    "distribuidorId": 25
+                }
 
-            } catch (error) {
-                console.log(error);
-            }
+            });
+
+        } catch (error) {
+            console.log(error);
+        }
         // }
     }
-    //checkbox bool - ofrece renta
-    //int disponibilidad de venta
-    //
 
-    const [OfreceRenta, setOfreceRenta] = React.useState();
-    const handleChangeTipoRenta = (event) => {
-        setOfreceRenta(event.target.value);
+
+    // Tanques:
+
+    const [OfreceRentaTanques, setOfreceRentaTanques] = React.useState(props.data.tanques[0].renta);
+    const handleChangeTipoRentaTanques = (event) => {
+        setOfreceRentaTanques(event.target.value);
     };
 
-    const [DisponibilidadRenta, setDisponibilidadRenta] = React.useState();
-    const handleDisponibilidadRenta = (event) => {
-        setDisponibilidadRenta(event.target.value);
-    };
-
-
-    const [OfreceVenta, setOfreceVenta] = React.useState();
-    const handleChangeTipoVenta = (event) => {
-        setOfreceVenta(event.target.value);
-    };
-
-    const [DisponibilidadVenta, setDisponibilidadVenta] = React.useState();
-    const handleDisponibilidadVenta = (event) => {
-        setDisponibilidadVenta(event.target.value);
+    const [DisponibilidadRentaTanques, setDisponibilidadRentaTanques] = React.useState();
+    const handleDisponibilidadRentaTanques = (event) => {
+        setDisponibilidadRentaTanques(event.target.value);
     };
 
 
-    const [valueApellidoP, setValueApellidoP] = React.useState();
-    const handleChangeApellidoP = (event) => {
-        setValueApellidoP(event.target.value);
-    };
-    const [valueApellidoM, setValueApellidoM] = React.useState();
-    const handleChangeApellidoM = (event) => {
-        setValueApellidoM(event.target.value);
-    };
-    const [tipoNivel, setTipoNivel] = React.useState();
-    const handleChangeTipoNivel = (event) => {
-        setTipoNivel(event.target.value);
-    };
-    const [valueUT, setValueUT] = React.useState();
-    const handleChangeValueUT = (event) => {
-        setValueUT(event.target.value);
-    };
-    const [valueClave, setValueClave] = React.useState();
-    const handleChangeClave = (event) => {
-        setValueClave(event.target.value);
+    const [OfreceVentaTanques, setOfreceVentaTanques] = React.useState(props.data.tanques[0].venta);
+    const handleChangeTipoVentaTanques = (event) => {
+        setOfreceVentaTanques(event.target.value);
     };
 
-    const [valueHelperText, setHelperText] = React.useState('');
-    const [valueError, setError] = React.useState(false);
-
-    const handleChangePassword = (prop) => (event) => {
-        setValues({ ...values, [prop]: event.target.value });
-
-
-        if (event.target.value == parseInt(event.target.value, 10)) {
-
-            setHelperText('');
-            setError(false)
-
-        } else {
-            setHelperText('Valor numerico');
-            setError(true)
-        }
+    const [DisponibilidadVentaTanques, setDisponibilidadVentaTanques] = React.useState();
+    const handleDisponibilidadVentaTanques = (event) => {
+        setDisponibilidadVentaTanques(event.target.value);
     };
 
-    const handleClickShowPassword = () => {
-        setValues({ ...values, showPassword: !values.showPassword });
+    // Concentradores:
+
+    const [OfreceRentaConcentradores, setOfreceRentaConcentradores] = React.useState(props.data.concentradores[0].renta);
+    const handleChangeTipoRentaConcentradores = (event) => {
+        setOfreceRentaConcentradores(event.target.value);
     };
 
-    const handleMouseDownPassword = (event) => {
-        event.preventDefault();
-    };
-    const [values, setValues] = React.useState({
-        amount: '',
-        password: '',
-        weight: '',
-        weightRange: '',
-        showPassword: false,
-    });
-
-    const classes = useStyles();
-    const [modalStyle] = React.useState(getModalStyle);
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => {
-        setOpen(true);
+    const [DisponibilidadRentaConcentradores, setDisponibilidadRentaConcentradores] = React.useState();
+    const handleDisponibilidadRentaConcentradores = (event) => {
+        setDisponibilidadRentaConcentradores(event.target.value);
     };
 
-    const handleClose = () => {
-        setOpen(false);
+
+    const [OfreceVentaConcentradores, setOfreceVentaConcentradores] = React.useState(props.data.concentradores[0].venta);
+    const handleChangeTipoVentaConcentradores = (event) => {
+        setOfreceVentaConcentradores(event.target.value);
     };
 
-    const UploadData = () => {
-        fetch('http://localhost:8080/API/SetUsers', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(AllDataUsers())
-        }).then((res) => console.log(res));
-    }
-    const history = useHistory();
-
-    const AllDataUsers = () => {
-        return {
-
-        }
-
-    }
-    const BasicData = {
-
-    }
-
-
-    const body = (
-        <div style={modalStyle} className={classes.paper}>
-            <h2 id="simple-modal-title">Se modificaran los siguientes datos:</h2>
-
-            {Object.keys(AllDataUsers()).map(key =>
-                <BigText key={key}>{BasicData[key] + " : " + AllDataUsers()[key]}</BigText>)}
-
-
-
-        </div>
-    );
-
+    const [DisponibilidadVentaConcentradores, setDisponibilidadVentaConcentradores] = React.useState();
+    const handleDisponibilidadVentaConcentradores = (event) => {
+        setDisponibilidadVentaConcentradores(event.target.value);
+    };
 
 
     return (
         <CreateBox onSubmit={(e) => {
             e.preventDefault();
 
-
-            console.log(AllDataUsers())
-            handleOpen()
-
+            console.log(props.data);
 
         }}>
+
+            <FormLine>
+                <Subtitle>Tanques:</Subtitle>
+
+            </FormLine>
             <FormLine>
                 <BigTextField
                     id="OfreceRenta"
                     select
                     label="Ofrece Renta"
-                    value={OfreceRenta}
-                    onChange={handleChangeTipoRenta}
+                    value={OfreceRentaTanques}
+                    onChange={handleChangeTipoRentaTanques}
 
                 >
                     {NivelesRenta.map((option) => (
@@ -311,8 +196,8 @@ export default function FormularioDistribuidor() {
                 </BigTextField>
 
                 <BigTextField id="DisponibilidadRenta" label="Disponibilidad Renta"
-                    value={DisponibilidadRenta}
-                    onChange={handleDisponibilidadRenta} />
+                    value={DisponibilidadRentaTanques}
+                    onChange={handleDisponibilidadRentaTanques} />
             </FormLine>
 
             <FormLine>
@@ -320,8 +205,8 @@ export default function FormularioDistribuidor() {
                     id="OfreceVenta"
                     select
                     label="Ofrece Venta"
-                    value={OfreceVenta}
-                    onChange={handleChangeTipoVenta}
+                    value={OfreceVentaTanques}
+                    onChange={handleChangeTipoVentaTanques}
 
                 >
                     {NivelesVenta.map((option) => (
@@ -332,23 +217,63 @@ export default function FormularioDistribuidor() {
                 </BigTextField>
 
                 <BigTextField id="DisponibilidadVenta" label="Disponibilidad Venta"
-                    value={DisponibilidadVenta}
-                    onChange={handleDisponibilidadVenta} />
+                    value={DisponibilidadVentaTanques}
+                    onChange={handleDisponibilidadVentaTanques} />
+            </FormLine>
+
+
+
+            <FormLine>
+                <Subtitle>Concentradores:</Subtitle>
             </FormLine>
             <FormLine>
+                <BigTextField
+                    id="OfreceRenta"
+                    select
+                    label="Ofrece Renta"
+                    value={OfreceRentaConcentradores}
+                    onChange={handleChangeTipoRentaConcentradores}
+
+                >
+                    {NivelesRenta.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                        </MenuItem>
+                    ))}
+                </BigTextField>
+
+                <BigTextField id="DisponibilidadRenta" label="Disponibilidad Renta"
+                    value={DisponibilidadRentaConcentradores}
+                    onChange={handleDisponibilidadRentaConcentradores} />
+            </FormLine>
+
+            <FormLine>
+                <BigTextField
+                    id="OfreceVenta"
+                    select
+                    label="Ofrece Venta"
+                    value={OfreceVentaConcentradores}
+                    onChange={handleChangeTipoVentaConcentradores}
+
+                >
+                    {NivelesVenta.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                        </MenuItem>
+                    ))}
+                </BigTextField>
+
+                <BigTextField id="DisponibilidadVenta" label="Disponibilidad Venta"
+                    value={DisponibilidadVentaConcentradores}
+                    onChange={handleDisponibilidadVentaConcentradores} />
+            </FormLine>
+
+            <FormLine>
                 <Button variant="contained" color="primary" type='submit'>
-                    Crear
+                    Actualizar
                 </Button>
             </FormLine>
-            <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="simple-modal-title"
-                aria-describedby="simple-modal-description"
-                disableBackdropClick='true'
-            >
-                {body}
-            </Modal>
+
         </CreateBox>
 
 

@@ -3,9 +3,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { endPoints } from '../../types/endPoints';
 import swal from 'sweetalert';
 import axios from 'axios';
+import Typography from '@material-ui/core/Typography';
+import styled from 'styled-components';
+
 
 import { tablaDistribuidor } from '../../actions/paginaActions';
 import FormularioDistribuidor from '../Formulario/FormularioDistribuidor'
+
+const BigText = styled(Typography)({
+  width: '100%',
+  fontWeight: 'bold',
+  fontSize: '30px',
+  marginBottom: '2% !important',
+  textAlign: 'center'
+
+})
 
 
 export const PaginaDistribuidor = () => {
@@ -43,12 +55,13 @@ export const PaginaDistribuidor = () => {
 
   return (
     <div>
-      { cargado ?        
-      <>
-        <div>{dataDistribuidor.nombre_distribuidor}</div>
-        <FormularioDistribuidor />
-      </> : <div>Cargando</div>} <br></br>
       <button className="btn btn-primary" onClick={() => onClickRegresar()}>Regresar</button>
+      { cargado ?
+        <>
+          <BigText>{dataDistribuidor.nombre_distribuidor}</BigText>
+          <FormularioDistribuidor data={dataDistribuidor} />
+        </> : <div>Cargando</div>} <br></br>
+
 
     </div>
   )
