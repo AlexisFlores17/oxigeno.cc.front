@@ -62,7 +62,6 @@ export default function SignIn({history}) {
   const [botonActivado, setBotonActivado] = useState(false)
 
   const onClickSubmit = async(e)=>{
-    console.log(formValues);
     e.preventDefault();
     if(formValues.email==="" || formValues.password ===""){
       swal("¡Alerta!", "Por favor llene los campos Requeridos", "warning");

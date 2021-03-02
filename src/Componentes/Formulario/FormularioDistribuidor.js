@@ -86,7 +86,6 @@ const NivelesVenta = [
 export default function FormularioDistribuidor(props) {
 
     const state = useSelector( state => state.authReducer );
-
     const submit = async (e) => {
         e.preventDefault();
 
@@ -111,7 +110,8 @@ export default function FormularioDistribuidor(props) {
                     "concentradorDisponibilidadRenta": DisponibilidadRentaConcentradores,
                     "concentradorOfreceVenta": OfreceVentaConcentradores,
                     "concentradorDisponibilidadVenta": DisponibilidadVentaConcentradores,
-                    "distribuidorId": props.distribuidorId
+                    "distribuidorId": props.distribuidorId,
+                    "notas":notasPublicas
                 }
 
             });
@@ -127,7 +127,7 @@ export default function FormularioDistribuidor(props) {
 
     // Tanques:
 
-    const [OfreceRentaTanques, setOfreceRentaTanques] = React.useState(props.data.tanques[0].renta);
+    const [OfreceRentaTanques, setOfreceRentaTanques] = React.useState(props.data.tanques[0]?.renta);
     const handleChangeTipoRentaTanques = (event) => {
         setOfreceRentaTanques(event.target.value);
     };
@@ -138,7 +138,7 @@ export default function FormularioDistribuidor(props) {
     };
 
 
-    const [OfreceVentaTanques, setOfreceVentaTanques] = React.useState(props.data.tanques[0].venta);
+    const [OfreceVentaTanques, setOfreceVentaTanques] = React.useState(props.data.tanques[0]?.venta);
     const handleChangeTipoVentaTanques = (event) => {
         setOfreceVentaTanques(event.target.value);
     };
@@ -148,7 +148,7 @@ export default function FormularioDistribuidor(props) {
         setDisponibilidadVentaTanques(event.target.value);
     };
 
-    const [OfreceRecargaTanques, setOfreceRecargaTanques] = React.useState(props.data.tanques[0].recarga);
+    const [OfreceRecargaTanques, setOfreceRecargaTanques] = React.useState(props.data.tanques[0]?.recarga);
     const handleChangeTipoRecargaTanques = (event) => {
         setOfreceRecargaTanques(event.target.value);
     };
@@ -161,7 +161,7 @@ export default function FormularioDistribuidor(props) {
 
     // Concentradores:
 
-    const [OfreceRentaConcentradores, setOfreceRentaConcentradores] = React.useState(props.data.concentradores[0].renta);
+    const [OfreceRentaConcentradores, setOfreceRentaConcentradores] = React.useState(props.data.concentradores[0]?.renta);
     const handleChangeTipoRentaConcentradores = (event) => {
         setOfreceRentaConcentradores(event.target.value);
     };
@@ -172,7 +172,7 @@ export default function FormularioDistribuidor(props) {
     };
 
 
-    const [OfreceVentaConcentradores, setOfreceVentaConcentradores] = React.useState(props.data.concentradores[0].venta);
+    const [OfreceVentaConcentradores, setOfreceVentaConcentradores] = React.useState(props.data.concentradores[0]?.venta);
     const handleChangeTipoVentaConcentradores = (event) => {
         setOfreceVentaConcentradores(event.target.value);
     };
@@ -182,18 +182,24 @@ export default function FormularioDistribuidor(props) {
         setDisponibilidadVentaConcentradores(event.target.value);
     };
 
+    const [notasPublicas, setNotasPublicas] = React.useState(props.data.notas);
+    const handlenotasPublicas = (event) => {
+        setNotasPublicas(event.target.value);
+    };
+
 
     return (
         <CreateBox onSubmit={(e) => {
             e.preventDefault();
 
             console.log(props.data);
+        }} 
+        
+        >
 
-        }}>
-
-            <FormLine>
+            <FormLine> 
                 <Subtitle>Tanques:</Subtitle>
-
+ 
             </FormLine>
             <FormLine>
                 <BigTextField
@@ -258,8 +264,6 @@ export default function FormularioDistribuidor(props) {
                     onChange={handleDisponibilidadRecargaTanques} />
             </FormLine>
 
-
-
             <FormLine>
                 <Subtitle>Concentradores:</Subtitle>
             </FormLine>
@@ -305,6 +309,11 @@ export default function FormularioDistribuidor(props) {
                     onChange={handleDisponibilidadVentaConcentradores} />
             </FormLine>
 
+            <FormLine>
+                <BigTextField id="notasPublicas" label="Notas"
+                    value={notasPublicas}
+                    onChange={handlenotasPublicas} />
+            </FormLine>
             <FormLine>
                 <Button variant="contained" color="primary" type='submit' onClick={(e)=>{submit(e)}}>
                     Actualizar
