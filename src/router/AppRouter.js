@@ -18,8 +18,7 @@ export const AppRouter = () => {
     return (    
         <Router>
             <div>    
-                <Switch>
-                    
+                <Switch>                    
                     {/* <PrivateRoute path="/manager" component={Dashboard} isAutenticated={state.logged} /> */}
                     <Route exact path="/manager" component={Dashboard} />
                     <Route exact path="/oxigeno/formulario" component={FormularioDist} />

@@ -59,10 +59,26 @@ export default function SignIn({history}) {
   }
   const [ formValues, handleInputChange, reset ] = useForm( initialForm );
 
-  const [botonActivado, setBotonActivado] = useState(false)
+  const [botonActivado, setBotonActivado] = useState(false);
+
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+  }
+  const csrftoken = getCookie('csrftoken');
 
   const onClickSubmit = async(e)=>{
-    console.log(formValues);
     e.preventDefault();
     if(formValues.email==="" || formValues.password ===""){
       swal("¡Alerta!", "Por favor llene los campos Requeridos", "warning");
@@ -72,6 +88,9 @@ export default function SignIn({history}) {
         const peticion= await axios({
             method: 'post',
             url: `${endPoints}manager/login/`,
+            headers:{
+              'X-CSRFToken': csrftoken
+            },
             data: {
               email: formValues.email,
               password: formValues.password

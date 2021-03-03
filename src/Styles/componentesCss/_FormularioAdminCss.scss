@@ -1,0 +1,61 @@
+
+.formDistribuidores{
+    @media ( max-width: 770px){
+
+        width: 100% !important;
+    
+    }
+    
+}
+
+.textFieldOfrece{
+    @media ( max-width: 770px){
+
+        width: 70% !important;
+    
+    }
+    @media ( max-width: 376px){
+        label{
+           font-size: 14px!important; 
+        }
+        width: 60% !important;
+    
+    }
+    @media ( max-width: 361px){
+        label{
+           font-size: 13px!important; 
+        }
+    
+    }
+
+    @media ( max-width: 320px){
+        label{
+           font-size: 12px!important; 
+        }
+    }
+}
+.tituloFormularioAdmin{
+    @media ( max-width: 280px){
+        font-size: 22px !important;
+    }
+}
+.textFieldDisponibilidad{
+
+    @media ( max-width: 376px){
+        label{
+            font-size: 14px!important; 
+        }  
+    }
+    @media ( max-width: 320px){
+        label{
+           font-size: 12px!important; 
+        }
+    
+    }
+    @media ( max-width: 280px){
+        label{
+           font-size: 11px!important; 
+        }
+    
+    }
+}
