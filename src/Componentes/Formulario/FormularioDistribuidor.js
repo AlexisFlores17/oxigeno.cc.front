@@ -191,14 +191,12 @@ export default function FormularioDistribuidor(props) {
     return (
         <CreateBox onSubmit={(e) => {
             e.preventDefault();
-
-            console.log(props.data);
         }} 
-        
+            className="formDistribuidores"
         >
 
             <FormLine> 
-                <Subtitle>Tanques:</Subtitle>
+                <Subtitle className="tituloFormularioAdmin">Tanques:</Subtitle>
  
             </FormLine>
             <FormLine>
@@ -208,7 +206,7 @@ export default function FormularioDistribuidor(props) {
                     label="Ofrece Renta"
                     value={OfreceRentaTanques}
                     onChange={handleChangeTipoRentaTanques}
-
+                    className="textFieldOfrece"
                 >
                     {NivelesRenta.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
@@ -219,7 +217,10 @@ export default function FormularioDistribuidor(props) {
 
                 <BigTextField id="DisponibilidadRenta" label="Disponibilidad Renta"
                     value={DisponibilidadRentaTanques}
-                    onChange={handleDisponibilidadRentaTanques} />
+                    onChange={handleDisponibilidadRentaTanques} 
+                    className="textFieldDisponibilidad"
+                />
+                    
             </FormLine>
 
             <FormLine>
@@ -229,7 +230,7 @@ export default function FormularioDistribuidor(props) {
                     label="Ofrece Venta"
                     value={OfreceVentaTanques}
                     onChange={handleChangeTipoVentaTanques}
-
+                    className="textFieldOfrece"
                 >
                     {NivelesVenta.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
@@ -240,7 +241,9 @@ export default function FormularioDistribuidor(props) {
 
                 <BigTextField id="DisponibilidadVenta" label="Disponibilidad Venta"
                     value={DisponibilidadVentaTanques}
-                    onChange={handleDisponibilidadVentaTanques} />
+                    onChange={handleDisponibilidadVentaTanques} 
+                    className="textFieldDisponibilidad"
+                />
             </FormLine>
 
             <FormLine>
@@ -250,7 +253,7 @@ export default function FormularioDistribuidor(props) {
                     label="Ofrece Recarga"
                     value={OfreceRecargaTanques}
                     onChange={handleChangeTipoRecargaTanques}
-
+                    className="textFieldOfrece"
                 >
                     {NivelesVenta.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
@@ -261,11 +264,13 @@ export default function FormularioDistribuidor(props) {
 
                 <BigTextField id="DisponibilidadRecarga" label="Disponibilidad Recarga"
                     value={DisponibilidadRecargaTanques}
-                    onChange={handleDisponibilidadRecargaTanques} />
+                    onChange={handleDisponibilidadRecargaTanques} 
+                    className="textFieldDisponibilidad"
+                />
             </FormLine>
 
             <FormLine>
-                <Subtitle>Concentradores:</Subtitle>
+                <Subtitle  className="tituloFormularioAdmin">Concentradores:</Subtitle>
             </FormLine>
             <FormLine>
                 <BigTextField
@@ -274,7 +279,7 @@ export default function FormularioDistribuidor(props) {
                     label="Ofrece Renta"
                     value={OfreceRentaConcentradores}
                     onChange={handleChangeTipoRentaConcentradores}
-
+                    className="textFieldOfrece"
                 >
                     {NivelesRenta.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
@@ -285,7 +290,9 @@ export default function FormularioDistribuidor(props) {
 
                 <BigTextField id="DisponibilidadRenta" label="Disponibilidad Renta"
                     value={DisponibilidadRentaConcentradores}
-                    onChange={handleDisponibilidadRentaConcentradores} />
+                    onChange={handleDisponibilidadRentaConcentradores} 
+                    className="textFieldDisponibilidad"
+                />
             </FormLine>
 
             <FormLine>
@@ -295,7 +302,7 @@ export default function FormularioDistribuidor(props) {
                     label="Ofrece Venta"
                     value={OfreceVentaConcentradores}
                     onChange={handleChangeTipoVentaConcentradores}
-
+                    className="textFieldOfrece"
                 >
                     {NivelesVenta.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
@@ -306,7 +313,9 @@ export default function FormularioDistribuidor(props) {
 
                 <BigTextField id="DisponibilidadVenta" label="Disponibilidad Venta"
                     value={DisponibilidadVentaConcentradores}
-                    onChange={handleDisponibilidadVentaConcentradores} />
+                    onChange={handleDisponibilidadVentaConcentradores} 
+                    className="textFieldDisponibilidad"    
+                />
             </FormLine>
 
             <FormLine>
