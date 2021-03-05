@@ -5,10 +5,9 @@ import swal from 'sweetalert';
 import axios from 'axios';
 import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
-
-
 import { tablaDistribuidor } from '../../actions/paginaActions';
-import FormularioDistribuidor from '../Formulario/FormularioDistribuidor'
+import FormularioDistribuidor from './FormularioDistribuidor';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 const BigText = styled(Typography)({
   width: '100%',
@@ -55,14 +54,14 @@ export const PaginaDistribuidor = () => {
 
   return (
     <div>
-      <button className="btn btn-primary" onClick={() => onClickRegresar()}>Regresar</button>
       { cargado ?
         <>
-          <BigText>{dataDistribuidor.nombre_distribuidor}</BigText>
+          <BigText>
+            <ArrowBackIcon className="mr-3 buttonBackDist" onClick={() => onClickRegresar()} />
+            {dataDistribuidor.nombre_distribuidor}
+          </BigText>
           <FormularioDistribuidor data={dataDistribuidor} />
         </> : <div>Cargando</div>} <br></br>
-
-
     </div>
   )
 }
