@@ -3,9 +3,7 @@ import styled from 'styled-components';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
 import { endPoints } from '../../types/endPoints';
 import axios from 'axios';
 import {useSelector} from "react-redux";
@@ -144,13 +142,12 @@ export default function FormularioDistribuidor(props) {
 
 
     // Tanques:
-
     const [OfreceRentaTanques, setOfreceRentaTanques] = React.useState(props.data.tanques[0]?.renta);
     const handleChangeTipoRentaTanques = (event) => {
         setOfreceRentaTanques(event.target.value);
     };
 
-    const [DisponibilidadRentaTanques, setDisponibilidadRentaTanques] = React.useState();
+    const [DisponibilidadRentaTanques, setDisponibilidadRentaTanques] = React.useState(props.data.tanques[0]?.disponibilidad_renta);
     const handleDisponibilidadRentaTanques = (event) => {
         setDisponibilidadRentaTanques(event.target.value);
     };
@@ -161,7 +158,7 @@ export default function FormularioDistribuidor(props) {
         setOfreceVentaTanques(event.target.value);
     };
 
-    const [DisponibilidadVentaTanques, setDisponibilidadVentaTanques] = React.useState();
+    const [DisponibilidadVentaTanques, setDisponibilidadVentaTanques] = React.useState(props.data.tanques[0]?.disponibilidad_venta);
     const handleDisponibilidadVentaTanques = (event) => {
         setDisponibilidadVentaTanques(event.target.value);
     };
@@ -171,7 +168,7 @@ export default function FormularioDistribuidor(props) {
         setOfreceRecargaTanques(event.target.value);
     };
 
-    const [DisponibilidadRecargaTanques, setDisponibilidadRecargaTanques] = React.useState();
+    const [DisponibilidadRecargaTanques, setDisponibilidadRecargaTanques] = React.useState(props.data.tanques[0]?.disponibilidad_recarga);
     const handleDisponibilidadRecargaTanques = (event) => {
         setDisponibilidadRecargaTanques(event.target.value);
     };
@@ -184,7 +181,7 @@ export default function FormularioDistribuidor(props) {
         setOfreceRentaConcentradores(event.target.value);
     };
 
-    const [DisponibilidadRentaConcentradores, setDisponibilidadRentaConcentradores] = React.useState();
+    const [DisponibilidadRentaConcentradores, setDisponibilidadRentaConcentradores] = React.useState(props.data.concentradores[0]?.disponibilidad_renta);
     const handleDisponibilidadRentaConcentradores = (event) => {
         setDisponibilidadRentaConcentradores(event.target.value);
     };
@@ -195,7 +192,7 @@ export default function FormularioDistribuidor(props) {
         setOfreceVentaConcentradores(event.target.value);
     };
 
-    const [DisponibilidadVentaConcentradores, setDisponibilidadVentaConcentradores] = React.useState();
+    const [DisponibilidadVentaConcentradores, setDisponibilidadVentaConcentradores] = React.useState(props.data.concentradores[0]?.disponibilidad_venta);
     const handleDisponibilidadVentaConcentradores = (event) => {
         setDisponibilidadVentaConcentradores(event.target.value);
     };
