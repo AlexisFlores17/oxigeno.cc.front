@@ -202,6 +202,11 @@ export default function FormularioDistribuidor(props) {
         setNotasPublicas(event.target.value);
     };
 
+    const [notasPrivadas, setNotasPrivadas] = React.useState(props.data.notasp);
+    const handlenotasPrivadas = (event) => {
+        setNotasPrivadas(event.target.value);
+    };
+
 
     return (
         <CreateBox onSubmit={(e) => {
@@ -334,10 +339,17 @@ export default function FormularioDistribuidor(props) {
             </FormLine>
 
             <FormLine>
-                <BigTextField id="notasPublicas" label="Notas"
+                <BigTextField id="notasPublicas" label="Notas públicas"
                     value={notasPublicas}
                     onChange={handlenotasPublicas} />
             </FormLine>
+
+            <FormLine>
+                <BigTextField id="notasPrivadas" label="Notas privadas"
+                    value={notasPrivadas}
+                    onChange={handlenotasPrivadas} />
+            </FormLine>
+
             <FormLine>
                 <Button variant="contained" color="primary" type='submit' onClick={(e)=>{submit(e)}}>
                     Actualizar
