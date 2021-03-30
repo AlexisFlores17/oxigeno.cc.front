@@ -3,9 +3,7 @@ import styled from 'styled-components';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
 import { endPoints } from '../../types/endPoints';
 import axios from 'axios';
 import {useSelector} from "react-redux";
@@ -85,6 +83,23 @@ const NivelesVenta = [
 
 export default function FormularioDistribuidor(props) {
 
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken');
+
     const state = useSelector( state => state.authReducer );
     const submit = async (e) => {
         e.preventDefault();
@@ -97,7 +112,8 @@ export default function FormularioDistribuidor(props) {
                 method: 'post',
                 url: `${endPoints}manager/distribuidor/`,
                 headers:{
-                    'Authorization': `JWT ${state.access}`
+                    'Authorization': `JWT ${state.access}`,
+                    'X-CSRFToken': csrftoken
                 },
                 data: {
                     "tanqueOfreceRenta": OfreceRecargaTanques,
@@ -126,13 +142,12 @@ export default function FormularioDistribuidor(props) {
 
 
     // Tanques:
-
     const [OfreceRentaTanques, setOfreceRentaTanques] = React.useState(props.data.tanques[0]?.renta);
     const handleChangeTipoRentaTanques = (event) => {
         setOfreceRentaTanques(event.target.value);
     };
 
-    const [DisponibilidadRentaTanques, setDisponibilidadRentaTanques] = React.useState();
+    const [DisponibilidadRentaTanques, setDisponibilidadRentaTanques] = React.useState(props.data.tanques[0]?.disponibilidad_renta);
     const handleDisponibilidadRentaTanques = (event) => {
         setDisponibilidadRentaTanques(event.target.value);
     };
@@ -143,7 +158,7 @@ export default function FormularioDistribuidor(props) {
         setOfreceVentaTanques(event.target.value);
     };
 
-    const [DisponibilidadVentaTanques, setDisponibilidadVentaTanques] = React.useState();
+    const [DisponibilidadVentaTanques, setDisponibilidadVentaTanques] = React.useState(props.data.tanques[0]?.disponibilidad_venta);
     const handleDisponibilidadVentaTanques = (event) => {
         setDisponibilidadVentaTanques(event.target.value);
     };
@@ -153,7 +168,7 @@ export default function FormularioDistribuidor(props) {
         setOfreceRecargaTanques(event.target.value);
     };
 
-    const [DisponibilidadRecargaTanques, setDisponibilidadRecargaTanques] = React.useState();
+    const [DisponibilidadRecargaTanques, setDisponibilidadRecargaTanques] = React.useState(props.data.tanques[0]?.disponibilidad_recarga);
     const handleDisponibilidadRecargaTanques = (event) => {
         setDisponibilidadRecargaTanques(event.target.value);
     };
@@ -166,7 +181,7 @@ export default function FormularioDistribuidor(props) {
         setOfreceRentaConcentradores(event.target.value);
     };
 
-    const [DisponibilidadRentaConcentradores, setDisponibilidadRentaConcentradores] = React.useState();
+    const [DisponibilidadRentaConcentradores, setDisponibilidadRentaConcentradores] = React.useState(props.data.concentradores[0]?.disponibilidad_renta);
     const handleDisponibilidadRentaConcentradores = (event) => {
         setDisponibilidadRentaConcentradores(event.target.value);
     };
@@ -177,7 +192,7 @@ export default function FormularioDistribuidor(props) {
         setOfreceVentaConcentradores(event.target.value);
     };
 
-    const [DisponibilidadVentaConcentradores, setDisponibilidadVentaConcentradores] = React.useState();
+    const [DisponibilidadVentaConcentradores, setDisponibilidadVentaConcentradores] = React.useState(props.data.concentradores[0]?.disponibilidad_venta);
     const handleDisponibilidadVentaConcentradores = (event) => {
         setDisponibilidadVentaConcentradores(event.target.value);
     };
@@ -185,6 +200,11 @@ export default function FormularioDistribuidor(props) {
     const [notasPublicas, setNotasPublicas] = React.useState(props.data.notas);
     const handlenotasPublicas = (event) => {
         setNotasPublicas(event.target.value);
+    };
+
+    const [notasPrivadas, setNotasPrivadas] = React.useState(props.data.notasp);
+    const handlenotasPrivadas = (event) => {
+        setNotasPrivadas(event.target.value);
     };
 
 
@@ -319,10 +339,17 @@ export default function FormularioDistribuidor(props) {
             </FormLine>
 
             <FormLine>
-                <BigTextField id="notasPublicas" label="Notas"
+                <BigTextField id="notasPublicas" label="Notas públicas"
                     value={notasPublicas}
                     onChange={handlenotasPublicas} />
             </FormLine>
+
+            <FormLine>
+                <BigTextField id="notasPrivadas" label="Notas privadas"
+                    value={notasPrivadas}
+                    onChange={handlenotasPrivadas} />
+            </FormLine>
+
             <FormLine>
                 <Button variant="contained" color="primary" type='submit' onClick={(e)=>{submit(e)}}>
                     Actualizar
