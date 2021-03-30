@@ -1,0 +1,98 @@
+.main-container-indexador{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    padding-top: 30px;
+}
+
+
+.tituloMainContent-indexador{
+    text-align: center;
+    color: white;
+    background-color: rgba($color: #188afc, $alpha: 0.8);
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    padding: 10px 10px;
+    font-family: Roboto,sans-serif;
+    border-radius: 15px;
+    -webkit-box-shadow: 0px 10px 28px -4px rgba(0,0,0,0.29);
+    -moz-box-shadow: 0px 10px 28px -4px rgba(0,0,0,0.29);
+    box-shadow: 0px 10px 28px -4px rgba(0,0,0,0.29);
+
+}
+
+.tituloContent-indexador{
+    font-size: 40px;
+    @media ( max-width: 1215px){
+        font-size: 35px;
+    }
+    @media ( max-width: 554px){
+        font-size: 30px;
+    }
+}
+
+.textoContent-indexador{
+    font-size: 16px;
+    text-align: center;
+    @media ( max-width: 1215px){
+        font-size: 15px;
+    }
+    @media ( max-width: 376px){
+        font-size: 13px;
+    }
+}
+.hoverMain-indexador{
+    color:white;
+    text-decoration: underline white;
+}
+
+.hoverMain-indexador:hover{
+    color: black;
+}
+
+//
+
+.listadoMainContent-indexador{
+    padding-top: 80px;
+    width: 100%;
+    // background-color: saddlebrown;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    @media ( max-width: 554px){
+        padding-top: 50px;
+    }
+}
+
+.buttonContainer-indexador{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.buttonMainContent-indexador{
+    font-family: Roboto,sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    width: 180px;
+    height: 50px;
+    background-color:#188afc ;
+    color: white;
+    -webkit-box-shadow: 0px 10px 23px 0px rgba(0,0,0,0.33);
+    -moz-box-shadow: 0px 10px 23px 0px rgba(0,0,0,0.33);
+    box-shadow: 0px 10px 23px 0px rgba(0,0,0,0.33);
+}
+
+.buttonMainContent-indexador:hover{
+    background-color: white ;
+    border: 2px solid #188afc;
+    color: #188afc;
+    -webkit-box-shadow: 0px 10px 23px 0px rgba(0,0,0,0);
+    -moz-box-shadow: 0px 10px 23px 0px rgba(0,0,0,0);
+    box-shadow: 0px 10px 23px 0px rgba(0,0,0,0);
+}
