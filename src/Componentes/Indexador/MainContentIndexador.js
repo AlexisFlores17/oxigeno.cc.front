@@ -60,14 +60,14 @@ export const MainContentIndexador = () =>{
         );
     }else if( cargado === 1){
         return(
-          <div className="tarjetas-container-indexador circularProgress col-12 col-md-9" >
-            <CircularProgress className="circulo-indexador" size={100} />
+          <div className="tarjetas-container circularProgress col-12 mt-5" >
+            <CircularProgress className="circulo" size={100} />
           </div>
         )
       }else{
         return(
-          <div className="tarjetas-container-indexador error col-12 col-md-9" >
-            <div className="cajaError-indexador">
+          <div className="tarjetas-container error col-12 mt-5" >
+            <div className="cajaError">
               Lo sentimos , hubo un error al cargar los datos (553)
             </div>
           </div>
