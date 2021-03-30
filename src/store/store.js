@@ -7,7 +7,7 @@ import { paginaReducer } from '../reducers/paginaReducer';
 const reducers = combineReducers({
     paginaReducer:paginaReducer,
     authReducer: authReducer,
-    filtrosAvanzadosCiudad: filtrosAvanzadosOrigen,
+    filtrosAvanzadosOrigen: filtrosAvanzadosOrigen,
     filtrosAvanzados: filtrosAvanzadosReducer
 })
 

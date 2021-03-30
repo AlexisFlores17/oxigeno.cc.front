@@ -3,8 +3,8 @@ import  {types} from "../types/types";
 
 
 export const filtrosAvanzadosOrigen = ( initialState = {
-    Estado:false,
-    Ciudad:false
+    estado:"",
+    id:0,
 }, action )=>{
     switch (action.type) {
         case types.CambiarFiltroOrigen:

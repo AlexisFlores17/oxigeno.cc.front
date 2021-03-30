@@ -9,7 +9,7 @@
 .tituloMainContent-indexador{
     text-align: center;
     color: white;
-    background-color: rgba($color: #188afc, $alpha: 0.8);
+    background-color: rgba($color: #457b9d, $alpha: 0.8);
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -81,7 +81,7 @@
     border-radius: 10px;
     width: 180px;
     height: 50px;
-    background-color:#188afc ;
+    background-color:#457b9d ;
     color: white;
     -webkit-box-shadow: 0px 10px 23px 0px rgba(0,0,0,0.33);
     -moz-box-shadow: 0px 10px 23px 0px rgba(0,0,0,0.33);
@@ -90,8 +90,8 @@
 
 .buttonMainContent-indexador:hover{
     background-color: white ;
-    border: 2px solid #188afc;
-    color: #188afc;
+    border: 2px solid #457b9d;
+    color: #457b9d;
     -webkit-box-shadow: 0px 10px 23px 0px rgba(0,0,0,0);
     -moz-box-shadow: 0px 10px 23px 0px rgba(0,0,0,0);
     box-shadow: 0px 10px 23px 0px rgba(0,0,0,0);

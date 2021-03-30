@@ -3,12 +3,16 @@ import { endPoints } from '../../types/endPoints';
 import axios from 'axios';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setEstado } from '../../actions/filtrosAvanzadosOrigen';
 
 export const MainContentIndexador = () =>{
 
     const [data, setData] = useState([]); 
     const [cargado, setCargado] = useState(1); // 0 = error, 1 = cargando, 2 = success
     const endPoint = `${endPoints}estados`;
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         getEstados()
@@ -31,7 +35,13 @@ export const MainContentIndexador = () =>{
           console.log(error)
           setCargado(0);
         }
-      }
+    }
+
+    const setOrigen = (estado, id) => {
+      localStorage.setItem("estado", estado);
+      localStorage.setItem("id", id);
+      dispatch( setEstado(estado, id) );
+    }
 
     if( cargado === 2 ){  
         return(
@@ -49,7 +59,7 @@ export const MainContentIndexador = () =>{
                     {
 
                         data.results.map( (estado)=>
-                            <div key={estado.id} className="buttonContainer-indexador col-xs-12 col-sm-6 col-md-4">
+                            <div key={estado.id} className="buttonContainer-indexador col-xs-12 col-sm-6 col-md-4" onClick={ () => setOrigen( estado.nombre, estado.id) }>
                                 <Link to="/distribuidores"><div className="buttonMainContent-indexador"> {estado.nombre}</div></Link>
                             </div>
                         )
