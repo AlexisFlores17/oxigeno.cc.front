@@ -207,7 +207,7 @@ export default function MyCard(props) {
               <Col className="boton-carta map">            
                 <Card.Link href= {`https://www.google.com/maps/place/${latMapa},${lngMapa}`} target="_blank" rel="noreferrer" >Mapa</Card.Link>
               </Col>
-              <Col className="boton-carta tel">
+              <Col className="boton-carta tel">                
                 <Card.Link href={`tel:${telefono}`}>{ 
                   telefono ===0 || telefono==="0"? "5556581111":telefono
                   } </Card.Link>
