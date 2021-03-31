@@ -12,7 +12,7 @@ import {dateFormat} from '../helpers/dateFormat';
 export default function MyCard(props) { 
 
   const {
-    nombre_distribuidor,
+    nombre,
     horario,
     // estado,
     direccion,
@@ -118,7 +118,7 @@ export default function MyCard(props) {
           <small className="text-muted ">Última actualización: {dateFormat(`${ultima_actualizacion}`, "mmm dd yyyy")} a las {dateFormat(`${ultima_actualizacion}`, "HH:MM:ss")} </small>        
         </Card.Header>
         <Card.Body>
-          <Card.Title className="card-title">{nombre_distribuidor}</Card.Title>
+          <Card.Title className="card-title">{nombre}</Card.Title>
           <Card.Subtitle className="mt10">Tanques:</Card.Subtitle>
           <Container>          
           <Row className="mt10">
@@ -207,7 +207,7 @@ export default function MyCard(props) {
               <Col className="boton-carta map">            
                 <Card.Link href= {`https://www.google.com/maps/place/${latMapa},${lngMapa}`} target="_blank" rel="noreferrer" >Mapa</Card.Link>
               </Col>
-              <Col className="boton-carta tel">
+              <Col className="boton-carta tel">                
                 <Card.Link href={`tel:${telefono}`}>{ 
                   telefono ===0 || telefono==="0"? "5556581111":telefono
                   } </Card.Link>

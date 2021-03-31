@@ -1,4 +1,4 @@
-$imageLogoHEader: url('../../img/logoOxigenoCC.PNG');
+$imageLogoHEader: url('../../img/logo4.png');
 $trianguloWidth: 40%;
 $headerHeight: 270px;
 
@@ -7,6 +7,7 @@ $headerHeight: 270px;
     flex-flow: row nowrap;
     width: 100%;
     height: $headerHeight;
+    
     @media ( max-width: 480px) {
         flex-flow: row wrap;
     }
@@ -64,8 +65,7 @@ $headerHeight: 270px;
     padding: 10px 0;
 }
 
-.HeaderContenedorTexto{  
-    // background-color: skyblue;
+.HeaderContenedorTexto{      
     display: flex;  
     flex-flow: column nowrap;
     height: 100%;
@@ -85,7 +85,7 @@ $headerHeight: 270px;
     .HeaderTitulo{
         font-family: Roboto, sans-serif;
         width: 100%;
-        color: #188AFC;
+        color: #66dddd;
         .black{
             color: black;
         }
