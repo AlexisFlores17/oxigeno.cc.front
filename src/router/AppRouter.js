@@ -15,15 +15,14 @@ import { Indexador } from '../Indexador';
 
 export const AppRouter = () => {
     const state = useSelector( state => state.authReducer );
-
     return (    
         <Router>
             <div>    
-                <Switch>                    
+                <Switch> 
+                    <Route exact path="/login" component={SignIn} />                   
                     {/* <PrivateRoute path="/manager" component={Dashboard} isAutenticated={state.logged} /> */}
                     <Route exact path="/manager" component={Dashboard} />
                     <Route exact path="/oxigeno/formulario" component={FormularioDist} />
-                    <Route exact path="/login" component={SignIn} />
                     <Route exact path="/distribuidores" component={App} />
                     <Route exact path="/"           component={Indexador} />
                     <Redirect to="/" />
