@@ -3,9 +3,12 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import imgLocatel from '../img/locatel.png'
+import { useSelector } from 'react-redux';
  
 
 export const Header = () =>{
+
+    const state = useSelector( state => state.filtrosAvanzadosOrigen );
 
     const link= window.location.href;
 
@@ -22,7 +25,7 @@ export const Header = () =>{
                         <img src={imgLocatel} alt="Logo locatel" className="img-fluid"/>
                     </div>
                 </div>
-                <div className="HeaderTitulo" ><div className="HeaderOxigeno" >oxígeno<span className="black"> cdmx</span></div></div>
+                <div className="HeaderTitulo" ><div className="HeaderOxigeno" >oxígeno<span className="black"> {state.estado.toLowerCase()}</span></div></div>
                 <div className="HeaderTexto" >Información actualizada todos los días para comprar, rentar o recargar tanques de oxígeno en la Ciudad de México.</div>            
             </div>
             <div className="HeaderBotonesRedes animate__animated animate__fadeIn animate__duration-1s animate__delay-1s" >

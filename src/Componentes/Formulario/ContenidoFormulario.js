@@ -4,9 +4,12 @@ import Checkbox from '@material-ui/core/Checkbox';
 import axios from 'axios';
 import swal from 'sweetalert';
 import {endPoints} from '../../types/endPoints';
+import {useParams } from "react-router";
 
 
 export const ContenidoFormulario = () => {
+
+    const { id } = useParams();
 
     const [buttonActivado, setButtonActivado] = useState(false)
 
@@ -60,12 +63,12 @@ export const ContenidoFormulario = () => {
             try {
                 const peticion = await axios({
                     method: 'post',
-                    url: `${endPoints}potencial/formulario/`,
+                    url: `${endPoints}${id}/potencial/formulario/`,
                     headers:{
                         'X-CSRFToken': csrftoken
                     },
                     data: {
-                        nombre_distribuidor: formValues.nombreDistribuidor,
+                        nombre: formValues.nombreDistribuidor,
                         rfc: formValues.rfc,
                         telefono: formValues.telefono,
                         direccion: formValues.direccion,
@@ -79,6 +82,7 @@ export const ContenidoFormulario = () => {
                         ofrece_recarga_de_tanque: boolValues.ofreceRecargaDeTanque,
                         ofrece_venta_de_concentrador: boolValues.ofreceVentaDeConcentrador,
                         ofrece_renta_de_concentrador: boolValues.ofreceRentaDeConcentrador,
+                        estado_procedencia:""
                     }
         
                 });

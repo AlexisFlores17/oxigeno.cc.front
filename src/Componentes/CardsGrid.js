@@ -5,35 +5,18 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import axios from 'axios';
 import Pagination from '@material-ui/lab/Pagination';
 import {endPoints} from '../types/endPoints';
-import { useHistory } from "react-router";
-import { useDispatch } from "react-redux";
-import { setEstado } from "../actions/filtrosAvanzadosOrigen";
+import { useParams } from 'react-router';
 
 
-export default function CardsGrid(props) { 
+export default function CardsGrid() { 
   const [data, setData] = useState([]); 
   const [cargado, setCargado] = useState(1); // 0 = error, 1 = cargando, 2 = success
   const [inicio,setInicio]=useState(0);
   const state = useSelector( state => state.filtrosAvanzados );  
-  const stateOrigen = useSelector( state => state.filtrosAvanzadosOrigen );  
   const [activePage, setActivePage] = useState(1);
 
-  const history = useHistory();
-  const dispatch = useDispatch();
+  const {id} = useParams()
 
-  useEffect(() => {
-
-    const estado = localStorage.getItem("estado");
-    const id = localStorage.getItem("id");
-    
-    if( !estado || !id ){
-      history.push("/");
-    } else {
-      dispatch( setEstado(estado, id) );
-    }
-
-  }, [])
-  
 
   const handleChange = (event, value) => {
     topFunction();
@@ -45,6 +28,7 @@ export default function CardsGrid(props) {
     document.documentElement.scrollTop = 100; // For Chrome, Firefox, IE and Opera
   }
 
+  const endPoint = `${endPoints}data/`;
 
   useEffect(() => {
     if( activePage === 1 && inicio===1){
@@ -53,7 +37,7 @@ export default function CardsGrid(props) {
       setActivePage(1);
     }
   
-  }, [state, stateOrigen]);
+  }, [state]);
 
 
   useEffect(() => {
@@ -64,11 +48,7 @@ export default function CardsGrid(props) {
 
   async function getData() {
 
-    let endPoint = `${endPoints}${stateOrigen.id}/data/`;
-
-    if( stateOrigen.id === 0 ){
-      endPoint = `${endPoints}${localStorage.getItem("id")}/data/`;
-    }
+    let endPoint = `${endPoints}${id}/data/`;
 
     try {
     

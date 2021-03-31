@@ -38,7 +38,7 @@ export const MainContentIndexador = () =>{
     }
 
     const setOrigen = (estado, id) => {
-      localStorage.setItem("estado", estado);
+      localStorage.setItem("estado", estado); 
       localStorage.setItem("id", id);
       dispatch( setEstado(estado, id) );
     }
@@ -60,7 +60,7 @@ export const MainContentIndexador = () =>{
 
                         data.results.map( (estado)=>
                             <div key={estado.id} className="buttonContainer-indexador col-xs-12 col-sm-6 col-md-4" onClick={ () => setOrigen( estado.nombre, estado.id) }>
-                                <Link to="/distribuidores"><div className="buttonMainContent-indexador"> {estado.nombre}</div></Link>
+                                <Link to={`/${estado.id}`}><div className="buttonMainContent-indexador"> {estado.nombre}</div></Link>
                             </div>
                         )
 
