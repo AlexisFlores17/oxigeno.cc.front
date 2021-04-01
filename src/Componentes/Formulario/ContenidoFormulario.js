@@ -82,7 +82,7 @@ export const ContenidoFormulario = () => {
                         ofrece_recarga_de_tanque: boolValues.ofreceRecargaDeTanque,
                         ofrece_venta_de_concentrador: boolValues.ofreceVentaDeConcentrador,
                         ofrece_renta_de_concentrador: boolValues.ofreceRentaDeConcentrador,
-                        estado_procedencia:""
+                        estado_procedencia: id
                     }
         
                 });
