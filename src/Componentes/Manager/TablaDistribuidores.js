@@ -61,7 +61,8 @@ export default function TablaDistribuidores() {
     try {
       const dataPeticion = await axios.get(`${endPoints}data`,{
         params:{
-          nombreComo: formValues.buscar
+          nombreComo: formValues.buscar,
+          alfabetico: 1
         }
       });
       
@@ -84,7 +85,11 @@ export default function TablaDistribuidores() {
   async function getData() {
     setRestablecer(true);
     try {
-      const dataPeticion = await axios.get(`${endPoints}data`,{});
+      const dataPeticion = await axios.get(`${endPoints}data`,{
+        params:{
+          alfabetico:1
+        }
+      });
       const dataBase= await dataPeticion.data;
       setData(dataBase.results);
 

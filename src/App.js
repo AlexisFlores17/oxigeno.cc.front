@@ -37,7 +37,7 @@ function App() {
 
       if (result.length > 0) {
         
-        dispatch( setEstado(result[0].nombre, result[0].id))
+        dispatch( setEstado(result[0].nombre, result[0].id, result[0].alias, result[0].header, result[0].footer))
         setCargando(false);
 
       }else{

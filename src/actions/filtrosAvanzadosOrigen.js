@@ -1,12 +1,16 @@
 import { types } from "../types/types";
 
 
-export const setEstado = (estado, id)=>{
+export const setEstado = (estado, id, alias,header,footer)=>{
     return{
         type: types.CambiarFiltroOrigen,
         payload:{
-            estado: estado,
-            id: id
+            estado,
+            id,
+            alias,
+            header,
+            footer
+
         }
     }
 }

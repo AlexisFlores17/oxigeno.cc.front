@@ -5,9 +5,9 @@ import  {types} from "../types/types";
 export const filtrosAvanzadosOrigen = ( initialState = {
     estado:"",
     id:0,
-    abreviatura:"",
-    imgH:"",
-    imgF:""
+    alias:"",
+    header:"",
+    footer:""
 }, action )=>{
     switch (action.type) {
         case types.CambiarFiltroOrigen:

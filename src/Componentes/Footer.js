@@ -5,10 +5,13 @@ import ImagenLocatel from '../img/locatel.png';
 import logoLight from '../img/logoLight.png';
 import { Link } from 'react-router-dom';
 import {useParams } from "react-router";
+import { useSelector } from 'react-redux';
 
 
 
 export const Footer = () =>{
+
+    const state = useSelector( state => state.filtrosAvanzadosOrigen );
 
     function topFunction() {
         document.body.scrollTop = 100; // For Safari
@@ -34,10 +37,10 @@ export const Footer = () =>{
                     <img src={Imagen1} alt="logo gobierno 1" className="imagen1 img-fluid"></img>   
                     <img src={Imagen2} alt="logo gobierno 2" className="imagen2 img-fluid"></img>           
                 </div> 
-                <img src={ImagenLocatel} alt="logo locatel" className="imagenLocatelFooter img-fluid"></img>
+                <img src={ state.footer } alt="logo locatel" className="imagenLocatelFooter img-fluid"></img>
             </div>
             <div className="footer">
-                <div className="copyOxigeno">Oxigenocdmx.cc</div>
+                <div className="copyOxigeno"><a href="https://oxigenomexico.cc">Oxigenomexico.cc</a></div>
                 <div className="refLsd">
                     <a href="https://lsdlab.com.mx/" rel="noreferrer" target="_blank">Administrado por Light & Sound Disruptive Lab</a>
                     <div className="contenedorImagen">

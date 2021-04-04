@@ -22,11 +22,11 @@ export const Header = () =>{
                 <div className="HeaderLogoContainer">
                     <div className="HeaderLogo" ></div>
                     <div className="HeaderLocatel img-fluid" >
-                        <img src={imgLocatel} alt="Logo locatel" className="img-fluid"/>
+                        <img src={state.header} alt="Logo Header" className="img-fluid"/>
                     </div>
                 </div>
-                <div className="HeaderTitulo" ><div className="HeaderOxigeno" >oxígeno<span className="black"> {state.estado.toLowerCase()}</span></div></div>
-                <div className="HeaderTexto" >Información actualizada todos los días para comprar, rentar o recargar tanques de oxígeno en la Ciudad de México.</div>            
+                <div className="HeaderTitulo" ><div className="HeaderOxigeno" >oxígeno<span className="black"> {state.alias.toLowerCase()}</span></div></div>
+                <div className="HeaderTexto" >Información actualizada todos los días para comprar, rentar o recargar tanques de oxígeno en {state.estado }.</div>            
             </div>
             <div className="HeaderBotonesRedes animate__animated animate__fadeIn animate__duration-1s animate__delay-1s" >
                 <a href="https://www.facebook.com/sharer/sharer.php?u=oxigenocdmx.cc" target="_blank" rel="noreferrer" aria-label="Share on Facebook" className="HeaderFacebook" >

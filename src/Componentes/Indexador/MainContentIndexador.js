@@ -37,10 +37,13 @@ export const MainContentIndexador = () =>{
         }
     }
 
-    const setOrigen = (estado, id) => {
+    const setOrigen = (estado, id, alias, header,footer) => {
       localStorage.setItem("estado", estado); 
       localStorage.setItem("id", id);
-      dispatch( setEstado(estado, id) );
+      localStorage.setItem("alias", alias);
+      localStorage.setItem("header", header)
+      localStorage.setItem("footer", footer)
+      dispatch( setEstado(estado, id, alias, header,footer) );
     }
 
     if( cargado === 2 ){  
@@ -59,7 +62,7 @@ export const MainContentIndexador = () =>{
                     {
 
                         data.results.map( (estado)=>
-                            <div key={estado.id} className="buttonContainer-indexador col-xs-12 col-sm-6 col-md-4" onClick={ () => setOrigen( estado.nombre, estado.id) }>
+                            <div key={estado.id} className="buttonContainer-indexador col-xs-12 col-sm-6 col-md-4" onClick={ () => setOrigen( estado.nombre, estado.id , estado.alias, estado.header, estado.footer) }>
                                 <Link to={`/${estado.id}`}><div className="buttonMainContent-indexador"> {estado.nombre}</div></Link>
                             </div>
                         )
