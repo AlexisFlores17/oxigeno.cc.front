@@ -14,3 +14,6 @@ function RemoveLastDirectoryPartOf(the_url)
 }
 
 export const endPoints =  `${RemoveLastDirectoryPartOf(window.location.href)}/api/v3/`;
+
+export const endPointsIndexadora =  `${window.location.href}/api/v3/`;
+

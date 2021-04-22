@@ -1,5 +1,5 @@
 import React,{ useEffect, useState} from 'react';
-import { endPoints } from '../../types/endPoints';
+import { endPointsIndexadora } from '../../types/endPoints';
 import axios from 'axios';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Link } from 'react-router-dom';
@@ -10,7 +10,7 @@ export const MainContentIndexador = () =>{
 
     const [data, setData] = useState([]); 
     const [cargado, setCargado] = useState(1); // 0 = error, 1 = cargando, 2 = success
-    const endPoint = `${endPoints}estados`;
+    const endPoint = `${endPointsIndexadora}estados`;
 
     const dispatch = useDispatch();
 
